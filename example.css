@@ -15,58 +15,57 @@ html,body,#wrapper {
 	shape-rendering: crispEdges;
 }
 
-.bar {
-	fill: #33b5e5;
+.bar-onset {
+	fill: #c062ff;
 }
 
-.bar-failed {
+.text-onset {
+    color: #c062ff;
+    margin-right: 10px;
+}
+
+.bar-max-effect {
+	fill: #FF69B4
+}
+
+.text-max-effect {
+	color: #FF69B4;
+    margin-right: 10px;
+}
+
+.bar-needs-scheduling {
 	fill: #CC0000;
 }
 
-.bar-running {
+.text-needs-scheduling {
+	color: #CC0000;
+    margin-right: 10px;
+}
+
+.bar-scheduled {
 	fill: #669900;
 }
 
-.bar-succeeded {
-	fill: #33b5e5;
+.text-scheduled {
+	color: #669900;
+    margin-right: 10px;
 }
 
-.bar-killed {
-	fill: #ffbb33;
+.bar-tbd {
+	fill: #000000;
 }
 
-#forkme_banner {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 10px;
-	z-index: 10;
-	padding: 10px 50px 10px 10px;
-	color: #fff;
-	background:
-		url('http://dk8996.github.io/Gantt-Chart/images/blacktocat.png')
-		#0090ff no-repeat 95% 50%;
-	font-weight: 700;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	text-decoration: none;
+.text-tbd {
+	color: #000000;
+    margin-right: 10px;
 }
 
-#twittme_banner {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 180px;
-	z-index: 10;
-	padding: 10px 50px 10px 10px;
-	color: #fff;
-	background:
-		url('http://dk8996.github.io/Gantt-Chart/images/twitter.png')
-		#0090ff no-repeat 95% 50%;
-	font-weight: 700;
-	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	text-decoration: none;
+
+.bar-before {
+	fill: #20c4ff;
+}
+
+.text-before {
+	color: #20c4ff;
+    margin-right: 10px;
 }

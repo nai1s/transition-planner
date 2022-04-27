@@ -10,7 +10,7 @@
     var margin = {
 	top : 20,
 	right : 40,
-	bottom : 20,
+	bottom : 50,
 	left : 150
     };
     var selector = 'body';
@@ -19,10 +19,10 @@
     var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
     var taskTypes = [];
     var taskStatus = [];
-    var height = document.body.clientHeight - margin.top - margin.bottom-5;
+    var height = document.body.clientHeight - margin.top - margin.bottom-20;
     var width = document.body.clientWidth - margin.right - margin.left-5;
 
-    var tickFormat = "%H:%M";
+    var tickFormat = "%m/%d";
 
     var keyFunction = function(d) {
 	return d.startDate + d.taskName + d.endDate;
@@ -105,7 +105,13 @@
 	 .attr("class", "x axis")
 	 .attr("transform", "translate(0, " + (height - margin.top - margin.bottom) + ")")
 	 .transition()
-	 .call(xAxis);
+	 .call(xAxis)
+     .selectAll("text")
+    .attr("y", 0)
+    .attr("x", 9)
+    .attr("dy", ".35em")
+    .attr("transform", "rotate(90)")
+    .style("text-anchor", "start");
 	 
 	 svg.append("g").attr("class", "y axis").transition().call(yAxis);
 	 
