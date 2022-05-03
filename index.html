@@ -7,9 +7,12 @@
 </head>
 <body>
 	<script src="https://d3js.org/d3.v3.js"></script>
-	<script type="text/javascript" src="gantt-chart-d3.js"></script>
+    <script type="text/javascript" src="gantt-chart-d3.js"></script>
 	<script type="text/javascript" src="transition-planner.js"></script>
+    <script type="text/javascript" src="saveSvgAsPng.js"></script>
     
+    <input type="date" value="2017-06-01">
+
     <span class="text-needs-scheduling">Needs Scheduling</span>
     <span class="text-scheduled">Scheduled</span>
     <span class="text-tbd">TBD</span>
@@ -21,6 +24,9 @@
     <br>
     <a id="downloadAnchorElem" class="button">Download My Plan</a>
     <script type="text/javascript" src="json-download.js"></script>
+
+    <button id="downloadPng">Download Image</button>
+    <script type="text/javascript" src="png-download.js"></script>
 
 </body>
 </html>
