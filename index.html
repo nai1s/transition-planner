@@ -10,7 +10,15 @@
     <script type="text/javascript" src="gantt-chart-d3.js"></script>
 	<script type="text/javascript" src="transition-planner.js"></script>
     <script type="text/javascript" src="saveSvgAsPng.js"></script>
+    <script type="text/javascript" src="generateMtFPlan.js"></script>
     
+    <button onclick="generateAndRenderMtFPlan()">Generate New MtF Plan</button>
+
+    <input id="file" type="file" />
+    <p>Select a file with the following format.</p>
+    <script type="text/javascript" src="json-upload.js"></script>
+    
+
     <input type="date" value="2017-06-01">
 
     <span class="text-needs-scheduling">Needs Scheduling</span>

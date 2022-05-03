@@ -37,6 +37,10 @@ html,body,#wrapper {
 	fill: #CC0000;
 }
 
+.bar-variable {
+	fill: #fbff04;
+}
+
 .text-needs-scheduling {
 	color: #CC0000;
     margin-right: 10px;
