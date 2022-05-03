@@ -8,7 +8,8 @@
     "express-handlebars": "^6.0.2",
     "http-server": "^14.1.0",
     "node-static": "^0.7.11",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {},
   "scripts": {

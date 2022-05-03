@@ -34,3 +34,46 @@ docker-compose up -d .
 This is a bit more advanced, you can use the attached helm chart for this if desired.
 
 Louis(e)
+
+
+
+    /*
+    Onset: 
+    3-6 month onset:
+    Body fat
+    Decreased muscle mass
+    skin softening
+    Breast Growth
+    Smaller Testes
+
+    1-3 month onset
+    decreased libido
+    decreased erections
+    mood changes
+
+    6-12 month:
+    Thinning body hair
+
+
+    Max effect:
+
+    2-5 years
+    body fat
+
+    1-2 years 
+    decreased strength
+    decreased libido
+
+    3-6 months decreased erections
+
+    2-3 years:
+    breast growth
+    testicular volume
+
+    3+ years:
+    body hair
+
+    male baldness:
+    1-2 years
+
+    */

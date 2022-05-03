@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Transition Planner</title>
-  
-  <!-- Uncomment this line if you're working offline -->
-  <!-- <link rel="stylesheet" href="offline-scripts/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
-  <style>
-    body { padding-top: 50px; }
-  </style>
+<title>Transition Planner</title>
+<link type="text/css" href="http://mbostock.github.io/d3/style.css" rel="stylesheet" />
+<link type="text/css" href="transition-planner.css" rel="stylesheet" />
 </head>
 <body>
-  <!DOCTYPE html>
-<meta charset="utf-8">
-<!-- Load d3.js -->
-
-<iframe src="/transition-planner.html" style="
-width: 100%;
-margin: 0 auto;
-height: 600px;
-border:none;
-display: block;
-"></iframe>
-
+	<script src="https://d3js.org/d3.v3.js"></script>
+	<script type="text/javascript" src="gantt-chart-d3.js"></script>
+	<script type="text/javascript" src="transition-planner.js"></script>
     
+    <span class="text-needs-scheduling">Needs Scheduling</span>
+    <span class="text-scheduled">Scheduled</span>
+    <span class="text-tbd">TBD</span>
+    <span class="text-before">Before</span>
+    <span class="text-onset">Onset</span>
+    <span class="text-max-effect">Max Effect</span>
+
+
+    <br>
+    <a id="downloadAnchorElem" class="button">Download My Plan</a>
+    <script type="text/javascript" src="json-download.js"></script>
+
 </body>
 </html>
