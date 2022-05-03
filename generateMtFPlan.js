@@ -1,14 +1,15 @@
 
 
-function generateAndRenderMtFPlan() {
-ganttChartJSON = GenerateMtFTransitionPlannerJSON();
+function generateAndRenderMtFPlan(hormoneStartDate) {
+ganttChartJSON = GenerateMtFTransitionPlannerJSON(hormoneStartDate);
 renderGanttChart( );
+formatJSONToEditableTable();
 }
 
 
 
 
-function GenerateMtFTransitionPlannerJSON() {
+function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
 
     var msInDay = 24*60*60*1000;
 
@@ -50,7 +51,7 @@ function GenerateMtFTransitionPlannerJSON() {
     var spermCryoEnd = new Date(spermCryoStart.getTime()+(14 * msInDay));
     
 
-    var hrtStart = new Date(spermCryoEnd.getTime()+(1 * msInDay));
+    var hrtStart = hormoneStartDate;
     var laserStart = new Date(spermCryoEnd.getTime()+(42 * msInDay));
     
     var comeOutStart = new Date(hrtStart.getTime()+(1 * msInDay));

@@ -6,13 +6,29 @@
 <link type="text/css" href="transition-planner.css" rel="stylesheet" />
 </head>
 <body>
+   
+
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 	<script src="https://d3js.org/d3.v3.js"></script>
-    <script type="text/javascript" src="gantt-chart-d3.js"></script>
-	<script type="text/javascript" src="transition-planner.js"></script>
-    <script type="text/javascript" src="saveSvgAsPng.js"></script>
-    <script type="text/javascript" src="generateMtFPlan.js"></script>
     
-    <button id="generateMtF" onclick="generateAndRenderMtFPlan()">Generate New MtF Plan</button>
+
+<!-- Trigger/Open The New MtF -->
+    <button id="newMtFModalButton">Generate New MtF Plan</button>
+
+            <!-- The Modal -->
+            <div id="mtfModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p>Set the date you plan to start taking hormones. Everything else can be set later.</p>
+                <input type="date" id="hormoneStartDate">
+                <button id="generateMtF">Generate New MtF Plan</button>
+            </div>
+
+            </div>
+
     <p>Upload a transition plan:</p>
     <input id="file" type="file" />
     <br>
@@ -20,7 +36,7 @@
     <script type="text/javascript" src="json-upload.js"></script>
     
 
-    <input type="date" value="2017-06-01">
+    <div id="planEditTable"></div>
 
     <span class="text-needs-scheduling">Needs Scheduling</span>
     <span class="text-scheduled">Scheduled</span>
@@ -31,11 +47,20 @@
 
 
     <br>
-    <a id="downloadAnchorElem" class="button">Download My Plan</a>
-    <script type="text/javascript" src="json-download.js"></script>
+    <button  onclick="downloadJSONFile()">Download My Plan</button>
+    <a id="downloadAnchorElem" style="display: none;"></a>
 
     <button id="downloadPng">Download Image</button>
+
+    <script type="text/javascript" src="gantt-chart-d3.js"></script>
+	<script type="text/javascript" src="transition-planner.js"></script>
+    <script type="text/javascript" src="saveSvgAsPng.js"></script>
+    <script type="text/javascript" src="generateMtFPlan.js"></script>
+    <script type="text/javascript" src="newMtFPlanModal.js"></script>
+    <script type="text/javascript" src="json-download.js"></script>
+    <script type="text/javascript" src="json-to-table.js"></script>
     <script type="text/javascript" src="png-download.js"></script>
+    
 
 </body>
 </html>
