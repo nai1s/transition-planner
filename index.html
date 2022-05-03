@@ -14,14 +14,12 @@
 	<script src="https://d3js.org/d3.v3.js"></script>
     
 
-<!-- Trigger/Open The New MtF -->
+<!-- Trigger/Open The New MtF Modal -->
     <button id="newMtFModalButton">Generate New MtF Plan</button>
 
-            <!-- The Modal -->
-            <div id="mtfModal" class="modal">
+            <div id="mtfModal" class="mtf-modal">
 
-            <!-- Modal content -->
-            <div class="modal-content">
+            <div class="mtf-modal-content">
                 <p>Set the date you plan to start taking hormones. Everything else can be set later.</p>
                 <input type="date" id="hormoneStartDate">
                 <button id="generateMtF">Generate New MtF Plan</button>
@@ -33,10 +31,25 @@
     <input id="file" type="file" />
     <br>
     
-    <script type="text/javascript" src="json-upload.js"></script>
     
 
-    <div id="planEditTable"></div>
+        <!-- Trigger/Open The Edit Plan Modal -->
+        <button id="editPlanModalButton" style="display: none;">Edit Transition Plan</button>
+
+        <div id="editPlanModal" class="edit-plan-modal">
+
+        <div class="edit-plan-modal-content">
+            <p>Make any plan changes, be sure to save your plan after!</p>
+            <button id="closeEditsNoSave">Close Without Saving</button>
+            <form>
+            <div id="planEditTable"></div>
+            <input id="finalizePlanEdits" type="submit">Save Plan Changes</input>
+            </form>
+        </div>
+
+        </div>
+
+    
 
     <span class="text-needs-scheduling">Needs Scheduling</span>
     <span class="text-scheduled">Scheduled</span>
@@ -52,11 +65,14 @@
 
     <button id="downloadPng">Download Image</button>
 
+    <script type="text/javascript" src="json-upload.js"></script>
     <script type="text/javascript" src="gantt-chart-d3.js"></script>
 	<script type="text/javascript" src="transition-planner.js"></script>
     <script type="text/javascript" src="saveSvgAsPng.js"></script>
     <script type="text/javascript" src="generateMtFPlan.js"></script>
-    <script type="text/javascript" src="newMtFPlanModal.js"></script>
+    <script type="text/javascript" src="modal-newMtFPlan.js"></script>
+    <script type="text/javascript" src="modal-editPlan.js"></script>
+    
     <script type="text/javascript" src="json-download.js"></script>
     <script type="text/javascript" src="json-to-table.js"></script>
     <script type="text/javascript" src="png-download.js"></script>

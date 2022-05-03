@@ -1,5 +1,5 @@
 // Get the modal
-var modal = document.getElementById("mtfModal");
+var mtfModal = document.getElementById("mtfModal");
 
 document.getElementById('hormoneStartDate').valueAsDate = new Date();
 
@@ -8,26 +8,22 @@ var btn = document.getElementById("newMtFModalButton");
 
 var newPlanButton = document.getElementById("generateMtF");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-var generateMtfButton = 
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+  mtfModal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 newPlanButton.onclick = function() {
     var hormoneStartDate = document.getElementById('hormoneStartDate').valueAsDate
     generateAndRenderMtFPlan(hormoneStartDate);
-  modal.style.display = "none";
+    mtfModal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == mtfModal) {
+    mtfModal.style.display = "none";
   }
 }

@@ -3,7 +3,7 @@
 function generateAndRenderMtFPlan(hormoneStartDate) {
 ganttChartJSON = GenerateMtFTransitionPlannerJSON(hormoneStartDate);
 renderGanttChart( );
-formatJSONToEditableTable();
+document.getElementById('editPlanModalButton').style.display = "block";
 }
 
 
@@ -246,11 +246,12 @@ function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
         "NEEDS-SCHEDULING" : "bar-needs-scheduling",
         "SCHEDULED" : "bar-scheduled",
         "IN-PROGRESS" : "bar-in-progress",
-        "BEFORE" : "bar-before",
-        "ONSET": "bar-onset",
-        "MAX-EFFECT" : "bar-max-effect",
+        "BEFORE" : "bar-before-mtf",
+        "ONSET": "bar-onset-mtf",
+        "MAX-EFFECT" : "bar-max-effect-mtf",
         "TBD" : "bar-tbd",
-        "VARIABLE" : "bar-variable"
+        "VARIABLE" : "bar-variable",
+        "DONE" : "bar-done"
     };
 
     var taskNames = [ comeOut, spermCryoLabel, hormonesLabel, lasersLabel, 
