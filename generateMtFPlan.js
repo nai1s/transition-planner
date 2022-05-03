@@ -1,13 +1,8 @@
-var ganttChartJSON;
+
 
 function generateAndRenderMtFPlan() {
 ganttChartJSON = GenerateMtFTransitionPlannerJSON();
-renderGanttChart(ganttChartJSON.tasks, 
-    ganttChartJSON.taskNames,
-    ganttChartJSON.taskStatus,
-    ganttChartJSON.minDate,
-    ganttChartJSON.maxDate
-      )
+renderGanttChart( );
 }
 
 

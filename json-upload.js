@@ -8,13 +8,14 @@
 
     function onReaderLoad(event){
         console.log(event.target.result);
-        var obj = JSON.parse(event.target.result);
-        alert_data(obj.name, obj.family);
+        ganttChartJSON = JSON.parse(event.target.result);
+        renderGanttChart( );
+        // alert_data(obj.name, obj.family);
     }
     
-    function alert_data(name, family){
-        alert('Name : ' + name + ', Family : ' + family);
-    }
+    // function alert_data(name, family){
+    //     alert('Name : ' + name + ', Family : ' + family);
+    // }
  
     document.getElementById('file').addEventListener('change', onChange);
 

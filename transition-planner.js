@@ -1,9 +1,11 @@
+//This global variable gets set by upload or new plan generation.
+var ganttChartJSON;
 
-function renderGanttChart(tasks, taskNames, taskStatus, minDate, maxDate) {
+function renderGanttChart() {
     
 
     var format = "%Y %B";
 
-    var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format).timeDomain([minDate, maxDate]);
-    gantt(tasks);
+    var gantt = d3.gantt().taskTypes(ganttChartJSON.taskNames).taskStatus(ganttChartJSON.taskStatus).tickFormat(format).timeDomain([ganttChartJSON.minDate, ganttChartJSON.maxDate]);
+    gantt(ganttChartJSON.tasks);
 }
