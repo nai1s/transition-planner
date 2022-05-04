@@ -77,7 +77,7 @@ function drawCommonLabels(svg, height, margin) {
     var selector = 'body';
     var timeDomainStart = d3.time.day.offset(new Date(),-3);
     var timeDomainEnd = d3.time.hour.offset(new Date(),+3);
-    var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
+    var timeDomainMode = FIXED_TIME_DOMAIN_MODE;// fixed or fit
     var taskTypes = [];
     var taskStatus = [];
     var height = document.body.clientHeight - margin.top - margin.bottom-20;
