@@ -19,18 +19,8 @@ html,body,#wrapper {
 	fill: #c062ff;
 }
 
-.text-onset-mtf {
-    color: #c062ff;
-    margin-right: 10px;
-}
-
 .bar-max-effect-mtf {
 	fill: #FF69B4
-}
-
-.text-max-effect-mtf {
-	color: #FF69B4;
-    margin-right: 10px;
 }
 
 .bar-needs-scheduling {
@@ -45,37 +35,16 @@ html,body,#wrapper {
 	fill: #000000;
 }
 
-.text-needs-scheduling {
-	color: #CC0000;
-    margin-right: 10px;
-}
-
 .bar-scheduled {
 	fill: #669900;
-}
-
-.text-scheduled {
-	color: #669900;
-    margin-right: 10px;
 }
 
 .bar-tbd {
 	fill: #ff9900;
 }
 
-.text-tbd {
-	color: #ff9900;
-    margin-right: 10px;
-}
-
-
 .bar-before-mtf {
 	fill: #20c4ff;
-}
-
-.text-before-mtf {
-	color: #20c4ff;
-    margin-right: 10px;
 }
 
 .button {

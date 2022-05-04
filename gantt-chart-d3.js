@@ -3,6 +3,59 @@
  * @version 2.1
  */
 
+ function dimAllExceptClassLabel (classLabel) {
+	//Dim all blobs
+	d3.selectAll("rect")
+	.transition().duration(200)
+	.style("stroke-width", 0.1)
+	.style("fill-opacity", 0.1);
+
+	//Bring back the hovered over blob
+	d3.selectAll(classLabel)
+	.transition().duration(200)
+	.style("stroke-width", 2.0)
+	.style("fill-opacity", 1.0);	       
+}
+
+ function returnAllToNormal() {
+	//Bring back all blobs
+	d3.selectAll("rect")
+	.transition().duration(200)
+	.style("stroke-width", 2.0)
+	.style("fill-opacity", 1.0);
+}
+
+
+function drawSingleLabel(statusLabel, className, innerIndex, svg, height, margin) {
+	var colorToDraw = '0xFFFFFF';
+	try {
+		colorToDraw = getComputedStyle(document.querySelector(className)).fill;
+	}
+	catch {
+		//Nothing of this type was drawn, just ignore for now
+		//TODO - more elegant handling
+	}
+	
+	svg.append("text")
+	 .attr("text-anchor", "start")
+	 .attr("x", - margin.left + 10 )
+	 .attr("y", height - 30 + 15 * innerIndex)
+	 .attr("stroke", colorToDraw)
+	 .text(statusLabel)
+	 .on('mouseover', function() {dimAllExceptClassLabel(className) } )
+	 .on('mouseout', function() {returnAllToNormal()});
+}
+
+function drawCommonLabels(svg, height, margin) {
+	taskStatusTypes = ganttChartJSON.taskStatus;
+
+	var innerIndex = 0;
+	for (const [key, value] of Object.entries(taskStatusTypes)) {
+		drawSingleLabel(key, "." + value, innerIndex, svg, height, margin);
+		innerIndex += 1;
+	  }
+}
+
  d3.gantt = function() {
     var FIT_TIME_DOMAIN_MODE = "fit";
     var FIXED_TIME_DOMAIN_MODE = "fixed";
@@ -115,6 +168,10 @@
 	 
 	 svg.append("g").attr("class", "y axis").transition().call(yAxis);
 	 
+
+
+	 drawCommonLabels(svg, height, margin);
+
 	 return gantt;
 
     };
