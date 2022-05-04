@@ -50,6 +50,14 @@ function drawCommonLabels(svg, height, margin) {
 	taskStatusTypes = ganttChartJSON.taskStatus;
 
 	var innerIndex = 0;
+
+	svg.append("text")
+	 .attr("text-anchor", "start")
+	 .attr("x", - margin.left + 10)
+	 .attr("y", height - 50)
+	 .attr("stroke", '0x000000')
+	 .text('Mouse Over to see detail:')
+
 	for (const [key, value] of Object.entries(taskStatusTypes)) {
 		drawSingleLabel(key, "." + value, innerIndex, svg, height, margin);
 		innerIndex += 1;

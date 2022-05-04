@@ -32,6 +32,16 @@ function parseTableToJSON() {
     }
 
     ganttChartJSON.tasks = allTasks;
-    ganttChartJSON.taskNames = allTaskNames;
+
+
+    var allTasksInOriginalOrder = [...taskNamesInOriginalOrder];
+
+    for(var allNamesIterator = 0; allNamesIterator < allTasksInOriginalOrder.length; allNamesIterator++){
+        if (!allTaskNames.includes(allTasksInOriginalOrder[allNamesIterator])) {
+            allTasksInOriginalOrder.splice(allNamesIterator,1);
+        }
+    }
+
+    ganttChartJSON.taskNames = allTasksInOriginalOrder;
 
 }
