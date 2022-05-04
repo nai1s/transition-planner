@@ -90,7 +90,7 @@ function drawCommonLabels(svg, height, margin) {
     };
 
     var rectTransform = function(d) {
-	return "translate(" + x(d.startDate) + "," + y(d.taskName) + ")";
+	return "translate(" + x(new Date(d.startDate)) + "," + y(d.taskName) + ")";
     };
 
     var x = d3.time.scale().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]).clamp(true);
@@ -161,7 +161,7 @@ function drawCommonLabels(svg, height, margin) {
 	 .attr("transform", rectTransform)
 	 .attr("height", function(d) { return y.rangeBand(); })
 	 .attr("width", function(d) { 
-	     return Math.max(1,(x(d.endDate) - x(d.startDate))); 
+	     return Math.max(1,(x(new Date(d.endDate)) - x(new Date(d.startDate)))); 
 	     });
 	 
 	 
@@ -210,14 +210,14 @@ function drawCommonLabels(svg, height, margin) {
 	 .attr("transform", rectTransform)
 	 .attr("height", function(d) { return y.rangeBand(); })
 	 .attr("width", function(d) { 
-	     return Math.max(1,(x(d.endDate) - x(d.startDate))); 
+	     return Math.max(1,(x(new Date(d.endDate)) - x(new Date(d.startDate)))); 
 	     });
 
         rect.transition()
           .attr("transform", rectTransform)
 	 .attr("height", function(d) { return y.rangeBand(); })
 	 .attr("width", function(d) { 
-	     return Math.max(1,(x(d.endDate) - x(d.startDate))); 
+	     return Math.max(1,(x(ate(new Dd.endDate)) - x(new Date(d.startDate)))); 
 	     });
         
 	rect.exit().remove();

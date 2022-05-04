@@ -10,6 +10,7 @@
         console.log(event.target.result);
         ganttChartJSON = JSON.parse(event.target.result);
         renderGanttChart( );
+        document.getElementById('editPlanModalButton').style.display = "block";
         // alert_data(obj.name, obj.family);
     }
     
