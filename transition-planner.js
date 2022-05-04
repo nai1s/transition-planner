@@ -1,6 +1,9 @@
 //This global variable gets set by upload or new plan generation.
 var ganttChartJSON;
 
+var msInDay = 24*60*60*1000;
+
+
 function renderGanttChart() {
     
 

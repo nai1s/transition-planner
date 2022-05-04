@@ -11,8 +11,6 @@ document.getElementById('editPlanModalButton').style.display = "block";
 
 function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
 
-    var msInDay = 24*60*60*1000;
-
     var spermCryoLabel = "Sperm Cryopreservation";
     var hormonesLabel = "Start Hormone Therapy";
     var lasersLabel = "Laser Hair Removal";
@@ -34,14 +32,14 @@ function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
     //Medical effects
 
     var bodyFat = "Body Fat Redistribution";
-    var muscleMass = "Decreased Muscle\n Mass/Strength";
+    var muscleMass = "Decreased Muscle Mass";
     var skinSoften = "Skin Softening";
     var breastGrowth = "Breast Growth";
     var smallerTestes = "Smaller Testes";
     var decreasedLibido = "Decreased Libido";
     var decreasedErections = "Decreased Erections";
     var moodChanges = "Mood Changes";
-    var baldness = "Male Pattern Baldness\n Loss Stops";
+    var baldness = "Baldness Loss Stops";
     var bodyHair = "Thinning Body Hair";
     var maleSexDysfunction = "Male sexual dysfunction";
     var decreasedSperm = "Decreased sperm production";

@@ -16,7 +16,8 @@ btn.onclick = function() {
 
 // When the user clicks on <span> (x), close the modal
 finalizeEdits.onclick = function() {
-    //TODO STUFF
+  parseTableToJSON();
+    renderGanttChart( );
     editModal.style.display = "none";
 }
 

@@ -1,7 +1,9 @@
 // Get the modal
 var mtfModal = document.getElementById("mtfModal");
 
-document.getElementById('hormoneStartDate').valueAsDate = new Date();
+var todaysDate = new Date();
+var nextWeek = new Date(todaysDate.getTime()+(14 * msInDay));
+document.getElementById('hormoneStartDate').valueAsDate = nextWeek;
 
 // Get the button that opens the modal
 var btn = document.getElementById("newMtFModalButton");

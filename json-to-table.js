@@ -71,7 +71,7 @@ function formatTableCellFromObj(scheduleObj, index, arr) {
     "<td><input type='date' id='start-" + index + "' value='" + scheduleObj.startDate.toISOString().split('T')[0] + "'></input></td>" + 
     "<td><input type='date' id='end-" + index + "' value='" + scheduleObj.endDate.toISOString().split('T')[0] + "'></input></td>" +
     "<td><input type='text' id='name-" + index + "' value='" + scheduleObj.taskName + "'></input></td>" +
-    "<td><select name='status-" + index + "' id='status-select- " + index + "'>" + selectStatusOptionHTML + "</select></td>" +
+    "<td><select name='status-" + index + "' id='status-select-" + index + "'>" + selectStatusOptionHTML + "</select></td>" +
     "<td><input type='button' value='Delete' onclick='deleteTableRow(this)'></tr>"
 
     allTableRowsHTML += tableRow;
@@ -81,7 +81,7 @@ function formatTableCellFromObj(scheduleObj, index, arr) {
 function formatJSONToEditableTable () {
     var div = document.getElementById('planEditTable');
     data = ganttChartJSON.tasks;
-    allTableRowsHTML = '<table class="table table-striped">' +
+    allTableRowsHTML = '<table id="editPlanTable" class="table table-striped">' +
     '<tr><th>Start Date</th><th>End Date</th><th>Name</th><th>Status</th><th>Remove</th></tr>'
     data.forEach(formatTableCellFromObj)
     allTableRowsHTML += "</table>"

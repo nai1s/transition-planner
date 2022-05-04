@@ -125,6 +125,9 @@ function drawCommonLabels(svg, height, margin) {
 	
 	initTimeDomain(tasks);
 	initAxis();
+
+
+    d3.select(selector).selectAll("svg").remove();
 	
 	var svg = d3.select(selector)
 	.append("svg")
