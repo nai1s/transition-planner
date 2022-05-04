@@ -6,7 +6,7 @@ function parseTableToJSON() {
     var allTasks = [];
 
     for(var taskIterator = 0; taskIterator < tableLength - 1; taskIterator++) {
-      
+      try {
         var statusSelect = document.getElementById("status-select-" + taskIterator)
 
             var newTask = {
@@ -14,11 +14,13 @@ function parseTableToJSON() {
                 "endDate": new Date(document.getElementById("end-" + taskIterator).value),
                 "taskName": document.getElementById("name-" + taskIterator).value,
                 "status": statusSelect.options[statusSelect.selectedIndex].value,
-                //"status": document.getElementById("status-" + taskIterator).options[getElementById("status-" + taskIterator).selectedIndex].value,
-            //"status": document.getElementById("status-select-" + taskIterator).options[getElementById("status-select-" + taskIterator).selectedIndex].value,
             
             }
             allTasks.push(newTask);
+        }
+        catch {
+            //TODO - better handling. This will happen if a row was deleted from the table.
+        }
     }
 
     ganttChartJSON.tasks = allTasks;

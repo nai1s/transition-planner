@@ -42,7 +42,7 @@ function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
     var baldness = "Baldness Loss Stops";
     var bodyHair = "Thinning Body Hair";
     var maleSexDysfunction = "Male sexual dysfunction";
-    var decreasedSperm = "Decreased sperm production";
+    var decreasedSperm = "Lower sperm production";
 
     //Month is 0-indexed
     var spermCryoStart = new Date();
@@ -76,7 +76,7 @@ function GenerateMtFTransitionPlannerJSON(hormoneStartDate) {
     var nameChangeEnd = new Date(hrtStart.getTime()+(700 * msInDay));
 
 
-    var chartEnd = new Date(hrtStart.getTime()+(720 * msInDay));
+    var chartEnd = new Date(hrtStart.getTime()+(1200 * msInDay));
 
     var bodyFatStart = new Date(hrtStart.getTime()+(90 * msInDay));
     var bodyFatMaxEffect = new Date(hrtStart.getTime()+(720 * msInDay));

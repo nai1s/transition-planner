@@ -38,8 +38,8 @@ function drawSingleLabel(statusLabel, className, innerIndex, svg, height, margin
 	
 	svg.append("text")
 	 .attr("text-anchor", "start")
-	 .attr("x", - margin.left + 10 )
-	 .attr("y", height - 30 + 15 * innerIndex)
+	 .attr("x", - margin.left + 10 + 90 * Math.floor(innerIndex / 6) )
+	 .attr("y", height - 30 + 15 * innerIndex - 45 * Math.floor(innerIndex / 6))
 	 .attr("stroke", colorToDraw)
 	 .text(statusLabel)
 	 .on('mouseover', function() {dimAllExceptClassLabel(className) } )
