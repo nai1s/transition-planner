@@ -5,17 +5,25 @@ function parseTableToJSON() {
 
     var allTasks = [];
 
+    var allTaskNames = [];
+
     for(var taskIterator = 0; taskIterator < tableLength - 1; taskIterator++) {
       try {
         var statusSelect = document.getElementById("status-select-" + taskIterator)
+        var taskName = document.getElementById("name-" + taskIterator).value;
 
             var newTask = {
                 "startDate": new Date(document.getElementById("start-" + taskIterator).value),
                 "endDate": new Date(document.getElementById("end-" + taskIterator).value),
-                "taskName": document.getElementById("name-" + taskIterator).value,
+                "taskName": taskName,
                 "status": statusSelect.options[statusSelect.selectedIndex].value,
             
             }
+
+            if (!allTaskNames.includes(taskName)) {
+                allTaskNames.push(taskName);
+              }
+
             allTasks.push(newTask);
         }
         catch {
@@ -24,5 +32,6 @@ function parseTableToJSON() {
     }
 
     ganttChartJSON.tasks = allTasks;
+    ganttChartJSON.taskNames = allTaskNames;
 
 }
