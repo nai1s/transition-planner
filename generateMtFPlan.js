@@ -36,10 +36,22 @@
     var maleSexDysfunction = "Male sexual dysfunction";
     var decreasedSperm = "Lower sperm production";
 
-var taskNamesInOriginalOrder = [ comeOut, spermCryoLabel, hormonesLabel, lasersLabel, 
-    consultation, counseling, bloodTest,
-    speechTherapySession, socialTransition, legalNameChange,  
-    hairTransplantLabel, ffsLabel, trachealShave, topSurgery, orchiectomySurgery, bottomSurgery, 
+var taskNamesInOriginalOrder = [ comeOut, 
+    spermCryoLabel, 
+    hormonesLabel, 
+    lasersLabel, 
+    consultation, 
+    counseling, 
+    bloodTest,
+    speechTherapySession, 
+    socialTransition, 
+    legalNameChange,  
+    hairTransplantLabel, 
+    ffsLabel, 
+    trachealShave, 
+    topSurgery, 
+    orchiectomySurgery, 
+    bottomSurgery, 
     bodyFat, muscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
     decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm  
 ];
@@ -134,134 +146,232 @@ function GenerateMtFTransitionPlannerJSON(
     var moodChangesMaxEffect = new Date(hrtStart.getTime()+(360 * msInDay));
 
 
-    var tasks = [
-        {"startDate": spermCryoStart,"endDate": spermCryoEnd,"taskName": spermCryoLabel,"status":MtFPlanObject.spermCryoStatus},
-        {"startDate": hrtStart,"endDate":hrtEnd,"taskName":hormonesLabel,"status":MtFPlanObject.hormoneStatus},
-        {"startDate": nameChangeStart,"endDate":nameChangeEnd,"taskName":legalNameChange,"status":MtFPlanObject.nameChangeStatus},
-        {"startDate": comeOutStart,"endDate":comeOutEnd,"taskName":comeOut,"status":MtFPlanObject.comeOutStatus},
-        {"startDate": socialTransitionStart,"endDate":socialTransitionEnd,"taskName":socialTransition,"status":MtFPlanObject.socialTransitionStatus},
-        {"startDate": hairTransplantStart,"endDate": hairTransplantEnd,"taskName": hairTransplantLabel,"status":MtFPlanObject.hairTransplantStatus},
-        {"startDate": ffsStart,"endDate": ffsEnd,"taskName": ffsLabel,"status":MtFPlanObject.ffsStatus},
-        {"startDate": trachealStart,"endDate": trachealEnd,"taskName": trachealShave,"status":MtFPlanObject.trachealShaveStatus},
-        {"startDate": topStart,"endDate": topEnd,"taskName": topSurgery,"status":MtFPlanObject.topStatus},
-        {"startDate": orchiectomyStart,"endDate": orchiectomyEnd,"taskName": orchiectomySurgery,"status":MtFPlanObject.orchiectomyStatus},
-        {"startDate": bottomStart,"endDate": bottomEnd,"taskName": bottomSurgery,"status":MtFPlanObject.bottomStatus},
-        {"startDate": hrtStart,"endDate": bodyFatStart,"taskName": bodyFat,"status":"BEFORE"},
-        {"startDate": bodyFatStart,"endDate": bodyFatMaxEffect,"taskName": bodyFat,"status":"ONSET"},
-        {"startDate": bodyFatMaxEffect,"endDate": chartEnd,"taskName": bodyFat,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": muscleMassStart,"taskName": muscleMass,"status":"BEFORE"},
-        {"startDate": muscleMassStart,"endDate": muscleMassMaxEffect,"taskName": muscleMass,"status":"ONSET"},
-        {"startDate": muscleMassMaxEffect,"endDate": chartEnd,"taskName": muscleMass,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": skinSoftenStart,"taskName": skinSoften,"status":"BEFORE"},
-        {"startDate": skinSoftenStart,"endDate": chartEnd,"taskName": skinSoften,"status":"ONSET"},
-        {"startDate": hrtStart,"endDate": decreasedLibidoStart,"taskName": decreasedLibido,"status":"BEFORE"},
-        {"startDate": decreasedLibidoStart,"endDate": decreasedLibidoMaxEffect,"taskName": decreasedLibido,"status":"ONSET"},
-        {"startDate": decreasedLibidoMaxEffect,"endDate": chartEnd,"taskName": decreasedLibido,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": decreasedTestesStart,"taskName": smallerTestes,"status":"BEFORE"},
-        {"startDate": decreasedTestesStart,"endDate": decreasedTestesMaxEffect,"taskName": smallerTestes,"status":"ONSET"},
-        {"startDate": decreasedTestesMaxEffect,"endDate": chartEnd,"taskName": smallerTestes,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": decreasedLibidoStart,"taskName": decreasedLibido,"status":"BEFORE"},
-        {"startDate": decreasedLibidoStart,"endDate": decreasedLibidoMaxEffect,"taskName": decreasedLibido,"status":"ONSET"},
-        {"startDate": decreasedLibidoMaxEffect,"endDate": chartEnd,"taskName": decreasedLibido,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": breastGrowthStart,"taskName": breastGrowth,"status":"BEFORE"},
-        {"startDate": breastGrowthStart,"endDate": breastGrowthMaxEffect,"taskName": breastGrowth,"status":"ONSET"},
-        {"startDate": breastGrowthMaxEffect,"endDate": chartEnd,"taskName": breastGrowth,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": decreasedErectionsStart,"taskName": decreasedErections,"status":"BEFORE"},
-        {"startDate": decreasedErectionsStart,"endDate": decreasedErectionsMaxEffect,"taskName": decreasedErections,"status":"ONSET"},
-        {"startDate": decreasedErectionsMaxEffect,"endDate": chartEnd,"taskName": decreasedErections,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": thinnedBodyHairStart,"taskName": bodyHair,"status":"BEFORE"},
-        {"startDate": thinnedBodyHairStart,"endDate": thinnedBodyHairMaxEffect,"taskName": bodyHair,"status":"ONSET"},
-        {"startDate": thinnedBodyHairMaxEffect,"endDate": chartEnd,"taskName": bodyHair,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": maleBaldnessStart,"taskName": baldness,"status":"BEFORE"},
-        {"startDate": maleBaldnessStart,"endDate": maleBaldnessMaxEffect,"taskName": baldness,"status":"ONSET"},
-        {"startDate": maleBaldnessMaxEffect,"endDate": chartEnd,"taskName": baldness,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": moodChangesStart,"taskName": moodChanges,"status":"BEFORE"},
-        {"startDate": moodChangesStart,"endDate": moodChangesMaxEffect,"taskName": moodChanges,"status":"ONSET"},
-        {"startDate": moodChangesMaxEffect,"endDate": chartEnd,"taskName": moodChanges,"status":"MAX-EFFECT"},
-        {"startDate": hrtStart,"endDate": chartEnd,"taskName": maleSexDysfunction,"status":"VARIABLE"},
-        {"startDate": hrtStart,"endDate": chartEnd,"taskName": decreasedSperm,"status":"VARIABLE"},
-        
-    ];
-        
-
-    var lasersAptStart = [];
-    var lasersAptEnd = [];
-    for(var i = 0; i < MtFPlanObject.numberLaserAppointments; i++) {
-        
-        var daysBetweenApts = 30;
-        lasersAptStart[i]  = new Date(laserStart.getTime()+(daysBetweenApts * i * msInDay));
-        if (i > 6) {
-            daysBetweenApts = 42;
-            lasersAptStart[i] = new Date(lasersAptStart[i-1].getTime()+(daysBetweenApts * msInDay));
-        }
-        if (i > 12) {
-            daysBetweenApts = 180;
-            lasersAptStart[i] = new Date(lasersAptStart[i-1].getTime()+(daysBetweenApts * msInDay));
-        }
-
-        
-        lasersAptEnd[i] = new Date(lasersAptStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": lasersAptStart[i],"endDate":  lasersAptEnd[i],"taskName": lasersLabel,"status":MtFPlanObject.laserStatus},)
-    }
-
-    var counselingStarts = MtFPlanObject.counselingStartDate;
-    var counselingAptsStart = [];
-    var counselingAptsEnd = [];
-    for(var i = 0; i < MtFPlanObject.counselingNumberSessions; i++) {
-        
-        var daysBetweenApts = MtFPlanObject.counselingDaysBetween;
-
-        counselingAptsStart[i] = new Date(counselingStarts.getTime()+(daysBetweenApts * i * msInDay));
-        counselingAptsEnd[i] = new Date(counselingAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": counselingAptsStart[i],"endDate":  counselingAptsEnd[i],"taskName": counseling,"status":MtFPlanObject.counselingStatus},)
-    }
-
-    var speechTherapyStart = MtFPlanObject.speechTherapyStartDate;
-    var speechTherapyAptsStart = [];
-    var speechTherapyAptsEnd = [];
-    for(var i = 0; i < MtFPlanObject.speechTherapyNumberSessions; i++) {
-        
-        var daysBetweenApts = MtFPlanObject.speechTherapyDaysBetween;
-
-        speechTherapyAptsStart[i] = new Date(speechTherapyStart.getTime()+(daysBetweenApts * i * msInDay));
-        speechTherapyAptsEnd[i] = new Date(speechTherapyAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": speechTherapyAptsStart[i],"endDate":  speechTherapyAptsEnd[i],"taskName": speechTherapySession,"status":MtFPlanObject.speechTherapyStatus},)
-    }
-
-    var consultationStart = MtFPlanObject.consultationStartDate;
-    var consultationAptsStart = [];
-    var consultationAptsEnd = [];
-    for(var i = 0; i < MtFPlanObject.consultationNumberAppointments; i++) {
-        
-        var daysBetweenApts = 90;
-        consultationAptsStart[i] = new Date(consultationStart.getTime()+(daysBetweenApts * i * msInDay));
-        if (i > 6) {
-            daysBetweenApts = 180;
-            consultationAptsStart[i] = new Date(consultationAptsStart[i-1].getTime()+(daysBetweenApts * msInDay));
-        }
-
-        consultationAptsEnd[i] = new Date(consultationAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": consultationAptsStart[i],"endDate":  consultationAptsEnd[i],"taskName": consultation,"status":MtFPlanObject.consultationStatus},)
-    }
-
-    var bloodTestStart =  MtFPlanObject.bloodTestStartDate;
-    var bloodTestAptsStart = [];
-    var bloodTestAptsEnd = [];
-    for(var i = 0; i < MtFPlanObject.bloodTestNumber; i++) {
-        
-        var daysBetweenApts = 30;
-        bloodTestAptsStart[i] = new Date(bloodTestStart.getTime()+(daysBetweenApts * i * msInDay));
-        if (i > 12) {
-            daysBetweenApts = 90;
-            bloodTestAptsStart[i] = new Date(bloodTestAptsStart[i-1].getTime()+(daysBetweenApts * msInDay));
-        }
-
-        bloodTestAptsEnd[i] = new Date(bloodTestAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": bloodTestAptsStart[i],"endDate":  bloodTestAptsEnd[i],"taskName": bloodTest,"status":MtFPlanObject.bloodTestStatus},)
-    }
+    var tasks = [];
 
     //Remove any tasks that have the status of "won't do"
-    //Remove all the onset/BEFORE/MAX effect tasks if hormones aren't selected
+
+
+    var taskNamesToUse = [];
+
+    if (MtFPlanObject.comeOutStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(comeOut);
+        tasks.push(
+            {"startDate": comeOutStart,"endDate":comeOutEnd,"taskName":comeOut,"status":MtFPlanObject.comeOutStatus},
+        
+        );
+    }
+    if (MtFPlanObject.spermCryoStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(spermCryoLabel);
+        tasks.push(
+            {"startDate": spermCryoStart,"endDate": spermCryoEnd,"taskName": spermCryoLabel,"status":MtFPlanObject.spermCryoStatus},
+        
+        );
+    }
+    if (MtFPlanObject.hormoneStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(hormonesLabel);
+        tasks.push(
+            {"startDate": hrtStart,"endDate":hrtEnd,"taskName":hormonesLabel,"status":MtFPlanObject.hormoneStatus},
+       
+        );
+    }
+    if (MtFPlanObject.laserStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(lasersLabel);
+            var lasersAptStart = [];
+            var lasersAptEnd = [];
+            for(var i = 0; i < MtFPlanObject.numberLaserAppointments; i++) {
+                
+                var daysBetweenApts = 30;
+                lasersAptStart[i]  = new Date(laserStart.getTime()+(daysBetweenApts * i * msInDay));
+                if (i > 6) {
+                    daysBetweenApts = 42;
+                    lasersAptStart[i] = new Date(lasersAptStart[i-1].getTime()+(daysBetweenApts * msInDay));
+                }
+                if (i > 12) {
+                    daysBetweenApts = 180;
+                    lasersAptStart[i] = new Date(lasersAptStart[i-1].getTime()+(daysBetweenApts * msInDay));
+                }
+
+                
+                lasersAptEnd[i] = new Date(lasersAptStart[i].getTime()+(1 * msInDay));
+                tasks.push({"startDate": lasersAptStart[i],"endDate":  lasersAptEnd[i],"taskName": lasersLabel,"status":MtFPlanObject.laserStatus},)
+            }
+    }
+    if (MtFPlanObject.consultationStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(consultation);
+        var consultationStart = MtFPlanObject.consultationStartDate;
+        var consultationAptsStart = [];
+        var consultationAptsEnd = [];
+        for(var i = 0; i < MtFPlanObject.consultationNumberAppointments; i++) {
+            
+            var daysBetweenApts = 90;
+            consultationAptsStart[i] = new Date(consultationStart.getTime()+(daysBetweenApts * i * msInDay));
+            if (i > 6) {
+                daysBetweenApts = 180;
+                consultationAptsStart[i] = new Date(consultationAptsStart[i-1].getTime()+(daysBetweenApts * msInDay));
+            }
+
+            consultationAptsEnd[i] = new Date(consultationAptsStart[i].getTime()+(1 * msInDay));
+            tasks.push({"startDate": consultationAptsStart[i],"endDate":  consultationAptsEnd[i],"taskName": consultation,"status":MtFPlanObject.consultationStatus},)
+        }
+    }
+    if (MtFPlanObject.counselingStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(counseling);
+        var counselingStarts = MtFPlanObject.counselingStartDate;
+        var counselingAptsStart = [];
+        var counselingAptsEnd = [];
+        for(var i = 0; i < MtFPlanObject.counselingNumberSessions; i++) {
+            
+            var daysBetweenApts = MtFPlanObject.counselingDaysBetween;
+
+            counselingAptsStart[i] = new Date(counselingStarts.getTime()+(daysBetweenApts * i * msInDay));
+            counselingAptsEnd[i] = new Date(counselingAptsStart[i].getTime()+(1 * msInDay));
+            tasks.push({"startDate": counselingAptsStart[i],"endDate":  counselingAptsEnd[i],"taskName": counseling,"status":MtFPlanObject.counselingStatus},)
+        }
+    }
+    
+    if (MtFPlanObject.bloodTestStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(bloodTest);
+        var bloodTestStart =  MtFPlanObject.bloodTestStartDate;
+        var bloodTestAptsStart = [];
+        var bloodTestAptsEnd = [];
+        for(var i = 0; i < MtFPlanObject.bloodTestNumber; i++) {
+            
+            var daysBetweenApts = 30;
+            bloodTestAptsStart[i] = new Date(bloodTestStart.getTime()+(daysBetweenApts * i * msInDay));
+            if (i > 12) {
+                daysBetweenApts = 90;
+                bloodTestAptsStart[i] = new Date(bloodTestAptsStart[i-1].getTime()+(daysBetweenApts * msInDay));
+            }
+
+            bloodTestAptsEnd[i] = new Date(bloodTestAptsStart[i].getTime()+(1 * msInDay));
+            tasks.push({"startDate": bloodTestAptsStart[i],"endDate":  bloodTestAptsEnd[i],"taskName": bloodTest,"status":MtFPlanObject.bloodTestStatus},)
+        }
+    }
+    if (MtFPlanObject.speechTherapyStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(speechTherapySession);
+        var speechTherapyStart = MtFPlanObject.speechTherapyStartDate;
+        var speechTherapyAptsStart = [];
+        var speechTherapyAptsEnd = [];
+        for(var i = 0; i < MtFPlanObject.speechTherapyNumberSessions; i++) {
+            
+            var daysBetweenApts = MtFPlanObject.speechTherapyDaysBetween;
+    
+            speechTherapyAptsStart[i] = new Date(speechTherapyStart.getTime()+(daysBetweenApts * i * msInDay));
+            speechTherapyAptsEnd[i] = new Date(speechTherapyAptsStart[i].getTime()+(1 * msInDay));
+            tasks.push({"startDate": speechTherapyAptsStart[i],"endDate":  speechTherapyAptsEnd[i],"taskName": speechTherapySession,"status":MtFPlanObject.speechTherapyStatus},)
+        }
+    }
+    if (MtFPlanObject.socialTransitionStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(socialTransition);
+        tasks.push(
+            {"startDate": socialTransitionStart,"endDate":socialTransitionEnd,"taskName":socialTransition,"status":MtFPlanObject.socialTransitionStatus},
+       
+        );
+    }
+    if (MtFPlanObject.nameChangeStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(legalNameChange);
+        tasks.push(
+            {"startDate": nameChangeStart,"endDate":nameChangeEnd,"taskName":legalNameChange,"status":MtFPlanObject.nameChangeStatus},
+       
+        );
+    }
+    if (MtFPlanObject.hairTransplantStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(hairTransplantLabel);
+        tasks.push(
+            {"startDate": hairTransplantStart,"endDate": hairTransplantEnd,"taskName": hairTransplantLabel,"status":MtFPlanObject.hairTransplantStatus},
+        
+        );
+    }
+    if (MtFPlanObject.ffsStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(ffsLabel);
+        tasks.push(
+            {"startDate": ffsStart,"endDate": ffsEnd,"taskName": ffsLabel,"status":MtFPlanObject.ffsStatus},
+       
+        );
+    }
+    if (MtFPlanObject.trachealShaveStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(trachealShave);
+        tasks.push(
+            {"startDate": trachealStart,"endDate": trachealEnd,"taskName": trachealShave,"status":MtFPlanObject.trachealShaveStatus},
+       
+        );
+    }
+    if (MtFPlanObject.topStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(topSurgery);
+        tasks.push(
+            {"startDate": topStart,"endDate": topEnd,"taskName": topSurgery,"status":MtFPlanObject.topStatus},
+       
+        );
+    }
+    if (MtFPlanObject.orchiectomyStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(orchiectomySurgery);
+        tasks.push(
+            {"startDate": orchiectomyStart,"endDate": orchiectomyEnd,"taskName": orchiectomySurgery,"status":MtFPlanObject.orchiectomyStatus},
+       
+        );
+    }
+    if (MtFPlanObject.bottomStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(bottomSurgery);
+        tasks.push(
+            {"startDate": bottomStart,"endDate": bottomEnd,"taskName": bottomSurgery,"status":MtFPlanObject.bottomStatus},
+      
+        );
+    }
+    
+        //Remove all the onset/BEFORE/MAX effect tasks if hormones aren't selected
+
+    if (MtFPlanObject.hormoneStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(bodyFat);
+        taskNamesToUse.push(muscleMass);
+        taskNamesToUse.push(skinSoften);
+        taskNamesToUse.push(breastGrowth);
+        taskNamesToUse.push(smallerTestes);
+        taskNamesToUse.push(decreasedErections);
+        taskNamesToUse.push(decreasedLibido);
+        taskNamesToUse.push(moodChanges);
+        taskNamesToUse.push(baldness);
+        taskNamesToUse.push(bodyHair);
+        taskNamesToUse.push(maleSexDysfunction);
+        taskNamesToUse.push(decreasedSperm);
+        tasks.push(
+            {"startDate": hrtStart,"endDate": bodyFatStart,"taskName": bodyFat,"status":"BEFORE"},
+            {"startDate": bodyFatStart,"endDate": bodyFatMaxEffect,"taskName": bodyFat,"status":"ONSET"},
+            {"startDate": bodyFatMaxEffect,"endDate": chartEnd,"taskName": bodyFat,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": muscleMassStart,"taskName": muscleMass,"status":"BEFORE"},
+            {"startDate": muscleMassStart,"endDate": muscleMassMaxEffect,"taskName": muscleMass,"status":"ONSET"},
+            {"startDate": muscleMassMaxEffect,"endDate": chartEnd,"taskName": muscleMass,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": skinSoftenStart,"taskName": skinSoften,"status":"BEFORE"},
+            {"startDate": skinSoftenStart,"endDate": chartEnd,"taskName": skinSoften,"status":"ONSET"},
+            {"startDate": hrtStart,"endDate": decreasedLibidoStart,"taskName": decreasedLibido,"status":"BEFORE"},
+            {"startDate": decreasedLibidoStart,"endDate": decreasedLibidoMaxEffect,"taskName": decreasedLibido,"status":"ONSET"},
+            {"startDate": decreasedLibidoMaxEffect,"endDate": chartEnd,"taskName": decreasedLibido,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": decreasedTestesStart,"taskName": smallerTestes,"status":"BEFORE"},
+            {"startDate": decreasedTestesStart,"endDate": decreasedTestesMaxEffect,"taskName": smallerTestes,"status":"ONSET"},
+            {"startDate": decreasedTestesMaxEffect,"endDate": chartEnd,"taskName": smallerTestes,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": decreasedLibidoStart,"taskName": decreasedLibido,"status":"BEFORE"},
+            {"startDate": decreasedLibidoStart,"endDate": decreasedLibidoMaxEffect,"taskName": decreasedLibido,"status":"ONSET"},
+            {"startDate": decreasedLibidoMaxEffect,"endDate": chartEnd,"taskName": decreasedLibido,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": breastGrowthStart,"taskName": breastGrowth,"status":"BEFORE"},
+            {"startDate": breastGrowthStart,"endDate": breastGrowthMaxEffect,"taskName": breastGrowth,"status":"ONSET"},
+            {"startDate": breastGrowthMaxEffect,"endDate": chartEnd,"taskName": breastGrowth,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": decreasedErectionsStart,"taskName": decreasedErections,"status":"BEFORE"},
+            {"startDate": decreasedErectionsStart,"endDate": decreasedErectionsMaxEffect,"taskName": decreasedErections,"status":"ONSET"},
+            {"startDate": decreasedErectionsMaxEffect,"endDate": chartEnd,"taskName": decreasedErections,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": thinnedBodyHairStart,"taskName": bodyHair,"status":"BEFORE"},
+            {"startDate": thinnedBodyHairStart,"endDate": thinnedBodyHairMaxEffect,"taskName": bodyHair,"status":"ONSET"},
+            {"startDate": thinnedBodyHairMaxEffect,"endDate": chartEnd,"taskName": bodyHair,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": maleBaldnessStart,"taskName": baldness,"status":"BEFORE"},
+            {"startDate": maleBaldnessStart,"endDate": maleBaldnessMaxEffect,"taskName": baldness,"status":"ONSET"},
+            {"startDate": maleBaldnessMaxEffect,"endDate": chartEnd,"taskName": baldness,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": moodChangesStart,"taskName": moodChanges,"status":"BEFORE"},
+            {"startDate": moodChangesStart,"endDate": moodChangesMaxEffect,"taskName": moodChanges,"status":"ONSET"},
+            {"startDate": moodChangesMaxEffect,"endDate": chartEnd,"taskName": moodChanges,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": chartEnd,"taskName": maleSexDysfunction,"status":"VARIABLE"},
+            {"startDate": hrtStart,"endDate": chartEnd,"taskName": decreasedSperm,"status":"VARIABLE"},
+      
+        );
+    }
+        
 
     var taskStatus = {
         "NEEDS-SCHEDULING" : "bar-needs-scheduling",
@@ -275,7 +385,7 @@ function GenerateMtFTransitionPlannerJSON(
         "DONE" : "bar-done"
     };
 
-    var taskNames = taskNamesInOriginalOrder;
+    var taskNames = taskNamesToUse;
 
     tasks.sort(function(a, b) {
         return a.endDate - b.endDate;
