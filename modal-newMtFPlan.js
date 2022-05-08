@@ -1,94 +1,7 @@
 
 
 
-//Define some manual table elements to collect
-//Are you planning to:
-var questionsRoundOne = 
-[ 
-  "Freeze sperm prior to starting hormones?",
-  "Take feminizing hormones (HRT)?",
-  "Come out publicly as female?",
-  "Socially transition to female?",
-  "Seek Hair Transplant Surgery (Hair Plugs)?",
-  "Seek Facial Feminization Surgery (FFS)?",
-  "Seek Top (aka Breast) Surgery?",
-  "Seek Bottom (aka Genital) Surgery?",
-  "Legally Change Your Name?",
-  "Get Laser Hair Removal Treatment?",
-  "Get Mental Health Counseling? (My biased opinion) you really should.",
-  "Get Speech Therapy?",
-  "Consult with a physician?",
-  "Get regular blood tests?"
- ]
 
-
-
- //When will you:
- var questionsRoundTwo = [
-   "Start sperm preservation? This can take 2-3 weeks.",
-   "Start HRT? If you are preserving sperm you should wait until that's finished to start HRT.",
-   "Come out publicly?",
-   "Start Social Transition?",
-   "Schedule Hair Transplants?",
-   "Schedule FFS?",
-   "Schedule Top Surgery?",
-   "Schedule Bottom Surgery?  Typically this requires a year or two of social transition + counseling.",
-   "Start the Legal Name Change?",
-   "Start Laser Hair Removal?   Note that this works best at least 6 weeks after starting hormones.",
-   "Start Counseling?",
-   "Start Speech Therapy?",
-   "Start Physician Consultations?",
-   "Start Blood Tests?"
- ]
-
-var today = new Date();
-
- var answersRoundTwo = [
-   today,
-   new Date(today.getTime()+(14 * msInDay)),
-   new Date(today.getTime()+(14 * msInDay)),
-   new Date(today.getTime()+(14 * msInDay)),
-   new Date(today.getTime()+(365 * msInDay)),
-   new Date(today.getTime()+(400 * msInDay)),
-   new Date(today.getTime()+(500 * msInDay)),
-   new Date(today.getTime()+(700 * msInDay)),
-   new Date(today.getTime()+(500 * msInDay)),
-   new Date(today.getTime()+(56 * msInDay)),
-   new Date(today.getTime()+(7 * msInDay)),
-   new Date(today.getTime()+(14 * msInDay)),
-   new Date(today.getTime()+(1 * msInDay)),
-   new Date(today.getTime()+(1 * msInDay)),
- ]
-
- //How many:
-
- var questionsRoundThree = [
-   "Laser Sessions are you planning? 6-12 are common to start with occasional followups, but sometimes more are needed.",
-   "Counseling Sessions are you planning? If you don't know just leave this at 50.",
-   "Speech Therapy Sessions are you planning?",
-   "Consultations are you planning? These drop off in frequency over time and are usually every 3 months to start.",
-    "Blood Tests are you planning? Typically these are once a month to start and less frequent over time."
- ]
-
- var answersRoundThree = [
-   16,
-80,
-12,
-10,
-22
-]
-
-//How frequently:
-
-var questionsRoundFour = [
-  "Counseling Sessions?",
-  "Speech Therapy Sessions?"
-]
-
-var answersRoundFour = [
-  14,
-  30
-]
 
 var allQuestionHTML = "";
 
@@ -96,6 +9,18 @@ var roundOneResponses = [];
 var roundTwoResponses = [];
 var roundThreeResponses = [];
 var roundFourResponses = [];
+
+var answersRoundOne = [];
+var answersRoundTwo = [];
+var answersRoundThree = [];
+var answersRoundFour = [];
+
+function initMtFModal() {
+   answersRoundOne = getAnswersRoundOne();
+   answersRoundTwo = getAnswersRoundTwo();
+   answersRoundThree = getAnswersRoundThree();
+   answersRoundFour = getAnswersRoundFour();
+}
 
 
 function parseMtFQuestionTableToJSON(iterator) {
@@ -124,13 +49,42 @@ function parseMtFQuestionTableToJSON(iterator) {
 
 
 function formatTableCellFromObjRoundOne(question, index, arr) {
+
+
+  var answer = answersRoundOne[index];
+
   var selectStatusOptionHTML = ""
-      selectStatusOptionHTML += "<option selected='true' value='NEEDS-SCHEDULING'>Yes, I haven't scheduled it</option>"; 
+
+      if(answer === "NEEDS-SCHEDULING")
+        selectStatusOptionHTML += "<option selected='true' value='NEEDS-SCHEDULING'>Yes, I haven't scheduled it</option>"; 
+      else
+        selectStatusOptionHTML += "<option value='NEEDS-SCHEDULING'>Yes, I haven't scheduled it</option>"; 
+
+      if(answer === "SCHEDULED")
+      selectStatusOptionHTML += "<option selected='true' value='SCHEDULED'>Yes, I have scheduled this.</option>"; 
+      else
       selectStatusOptionHTML += "<option value='SCHEDULED'>Yes, I have scheduled this.</option>"; 
-      selectStatusOptionHTML += "<option value='IN-PROGRESS'>Yes, this is in progress.</option>"; 
+
+      if (answer == "IN-PROGRESS" )
+        selectStatusOptionHTML += "<option selected='true' value='IN-PROGRESS'>Yes, this is in progress.</option>"; 
+      else 
+        selectStatusOptionHTML += "<option value='IN-PROGRESS'>Yes, this is in progress.</option>"; 
+
+      if (answer == "TBD" )
+      selectStatusOptionHTML += "<option selected='true' value='TBD'>I haven't decided</option>"; 
+      else 
       selectStatusOptionHTML += "<option value='TBD'>I haven't decided</option>"; 
-      selectStatusOptionHTML += "<option value='DONE'>Yes, I already did this.</option>"; 
+
+      if (answer == "DONE" )
+      selectStatusOptionHTML += "<option selected='true' value='DONE'>Yes, I already did this.</option>";
+      else
+      selectStatusOptionHTML += "<option value='DONE'>Yes, I already did this.</option>";
+
+      if (answer == "WILL-NOT-DO" )
+      selectStatusOptionHTML += "<option selected='true' value='WILL-NOT-DO'>No, I won't do this</option>"; 
+      else
       selectStatusOptionHTML += "<option value='WILL-NOT-DO'>No, I won't do this</option>"; 
+
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><select name='question-round-one-status-" + index + "' id='question-round-one-status-select-" + index + "'>" + selectStatusOptionHTML + "</select></td>";
@@ -268,6 +222,7 @@ var newPlanButton = document.getElementById("generateMtF");
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
+  initMtFModal();
   formatTableQuestions(0);
   mtfModal.style.display = "block";
 }
