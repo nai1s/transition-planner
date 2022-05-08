@@ -9,6 +9,8 @@
     var ffsLabel = "Facial Feminization";
     var topSurgery = "Top Surgery";
     var bottomSurgery = "Bottom Surgery";
+    var orchiectomySurgery = "Orchiectomy Surgery";
+    var trachealShave = "Trachel Shave Surgery";
     var counseling = "Counseling Sessions";
     var bloodTest = "Blood Tests";
     var consultation = "Medical Consultations";
@@ -37,7 +39,7 @@
 var taskNamesInOriginalOrder = [ comeOut, spermCryoLabel, hormonesLabel, lasersLabel, 
     consultation, counseling, bloodTest,
     speechTherapySession, socialTransition, legalNameChange,  
-    hairTransplantLabel, ffsLabel, topSurgery, bottomSurgery, 
+    hairTransplantLabel, ffsLabel, trachealShave, topSurgery, orchiectomySurgery, bottomSurgery, 
     bodyFat, muscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
     decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm  
 ];
@@ -88,6 +90,13 @@ function GenerateMtFTransitionPlannerJSON(
     var bottomStart = MtFPlanObject.bottomSurgeryStartDate;
     var bottomEnd = new Date(bottomStart.getTime()+(1 * msInDay));
 
+    var orchiectomyStart = MtFPlanObject.orchiectomyDate;
+    var orchiectomyEnd = new Date(orchiectomyStart.getTime()+(1 * msInDay));
+
+    var trachealStart = MtFPlanObject.trachealShaveDate;
+    var trachealEnd = new Date(trachealStart.getTime()+(1 * msInDay));
+
+
     var nameChangeStart = MtFPlanObject.nameChangeDate
     var nameChangeEnd = new Date(MtFPlanObject.nameChangeDate.getTime()+(90 * msInDay));
 
@@ -133,7 +142,9 @@ function GenerateMtFTransitionPlannerJSON(
         {"startDate": socialTransitionStart,"endDate":socialTransitionEnd,"taskName":socialTransition,"status":MtFPlanObject.socialTransitionStatus},
         {"startDate": hairTransplantStart,"endDate": hairTransplantEnd,"taskName": hairTransplantLabel,"status":MtFPlanObject.hairTransplantStatus},
         {"startDate": ffsStart,"endDate": ffsEnd,"taskName": ffsLabel,"status":MtFPlanObject.ffsStatus},
+        {"startDate": trachealStart,"endDate": trachealEnd,"taskName": trachealShave,"status":MtFPlanObject.trachealShaveStatus},
         {"startDate": topStart,"endDate": topEnd,"taskName": topSurgery,"status":MtFPlanObject.topStatus},
+        {"startDate": orchiectomyStart,"endDate": orchiectomyEnd,"taskName": orchiectomySurgery,"status":MtFPlanObject.orchiectomyStatus},
         {"startDate": bottomStart,"endDate": bottomEnd,"taskName": bottomSurgery,"status":MtFPlanObject.bottomStatus},
         {"startDate": hrtStart,"endDate": bodyFatStart,"taskName": bodyFat,"status":"BEFORE"},
         {"startDate": bodyFatStart,"endDate": bodyFatMaxEffect,"taskName": bodyFat,"status":"ONSET"},

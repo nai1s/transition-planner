@@ -17,7 +17,9 @@ function MtFPlanObject(    spermCryoStartDate, spermCryoStatus,
     speechTherapyDaysBetween, speechTherapyStatus,
     consultationStartDate,
     consultationNumberAppointments, consultationStatus,
-    bloodTestStartDate, bloodTestNumber, bloodTestStatus) {
+    bloodTestStartDate, bloodTestNumber, bloodTestStatus,
+    orchiectomyDate, orchiectomyStatus,
+    trachealShaveDate, trachealShaveStatus) {
         this.spermCryoStartDate = spermCryoStartDate, 
         this.spermCryoStatus=  spermCryoStatus ;
         this.hormoneStartDate=  hormoneStartDate ; 
@@ -54,6 +56,10 @@ function MtFPlanObject(    spermCryoStartDate, spermCryoStatus,
         this.bloodTestStartDate= bloodTestStartDate  ; 
         this.bloodTestNumber= bloodTestNumber  ; 
         this.bloodTestStatus= bloodTestStatus;
+        this.orchiectomyDate = orchiectomyDate;
+        this.orchiectomyStatus = orchiectomyStatus;
+        this.trachealShaveDate = trachealShaveDate;
+        this.trachealShaveStatus = trachealShaveStatus;
     }
 
     //Define some manual table elements to collect
@@ -67,13 +73,15 @@ var questionsRoundOne =
   "Seek Hair Transplant Surgery (Hair Plugs)?",
   "Seek Facial Feminization Surgery (FFS)?",
   "Seek Top (aka Breast) Surgery?",
-  "Seek Bottom (aka Genital) Surgery?",
+  "Seek Bottom (aka Vaginoplasty) Surgery?",
   "Legally Change Your Name?",
   "Get Laser Hair Removal Treatment?",
   "Get Mental Health Counseling? (My biased opinion) you really should.",
   "Get Speech Therapy?",
   "Consult with a physician?",
-  "Get regular blood tests?"
+  "Get regular blood tests?",
+  "Seek an Orchiectomy Surgery?",
+  "Seek Tracheal Shave Surgery?"
  ]
 
  function getAnswersRoundOne() {
@@ -91,9 +99,13 @@ var questionsRoundOne =
             ganttChartJSON.MtFPlanObject.counselingStatus,
             ganttChartJSON.MtFPlanObject.speechTherapyStatus,
             ganttChartJSON.MtFPlanObject.consultationStatus,
-            ganttChartJSON.MtFPlanObject.bloodTestStatus]
+            ganttChartJSON.MtFPlanObject.bloodTestStatus,
+            ganttChartJSON.MtFPlanObject.orchiectomyStatus,
+            ganttChartJSON.MtFPlanObject.trachealShaveStatus]
     }
     else return [
+    "NEEDS-SCHEDULING",
+    "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
@@ -126,7 +138,9 @@ var questionsRoundOne =
    "Start Counseling?",
    "Start Speech Therapy?",
    "Start Physician Consultations?",
-   "Start Blood Tests?"
+   "Start Blood Tests?",
+   "Schedule Orchiectomy?",
+   "Schedule Tracheal Shave?"
  ]
 
 
@@ -147,6 +161,8 @@ var questionsRoundOne =
             ganttChartJSON.MtFPlanObject.speechTherapyStartDate,
             ganttChartJSON.MtFPlanObject.consultationStartDate,
             ganttChartJSON.MtFPlanObject.bloodTestStartDate,
+            ganttChartJSON.MtFPlanObject.orchiectomyDate,
+            ganttChartJSON.MtFPlanObject.trachealShaveDate,
             
         ]
     }
@@ -168,6 +184,8 @@ var questionsRoundOne =
         new Date(today.getTime()+(14 * msInDay)),
         new Date(today.getTime()+(1 * msInDay)),
         new Date(today.getTime()+(1 * msInDay)),
+        new Date(today.getTime()+(450 * msInDay)),
+        new Date(today.getTime()+(550 * msInDay)),
         ]
     }
 }
