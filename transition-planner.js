@@ -16,7 +16,8 @@ function renderGanttChart() {
     var format = "%Y %B";
 
     var gantt = d3.gantt().taskTypes(ganttChartJSON.taskNames).taskStatus(ganttChartJSON.taskStatus)
-    .tickFormat(format).timeDomain(
+    .tickFormat(format)
+    .timeDomain(
         [document.getElementById('graphStartDate').valueAsDate, 
         document.getElementById('graphEndDate').valueAsDate]);
     gantt(ganttChartJSON.tasks);

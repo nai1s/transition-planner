@@ -187,7 +187,7 @@ function nextMtFButton(iterator) {
 
   if (iterator == 4) {
     //Use all the responses, there will be a lot of them
-    generateAndRenderMtFPlan(
+    thisMtFPlan = new MtFPlanObject(
       roundTwoResponses[0], roundOneResponses[0],
       roundTwoResponses[1], roundOneResponses[1],
       roundTwoResponses[2], roundOneResponses[2],
@@ -210,6 +210,8 @@ function nextMtFButton(iterator) {
     roundTwoResponses[13], roundThreeResponses[4], roundOneResponses[13]
       
       );
+
+      generateAndRenderMtFPlan(thisMtFPlan);
     mtfModal.style.display = "none";
   }
 

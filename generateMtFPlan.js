@@ -43,48 +43,10 @@ var taskNamesInOriginalOrder = [ comeOut, spermCryoLabel, hormonesLabel, lasersL
 ];
 
 function generateAndRenderMtFPlan(
-    spermCryoStartDate, spermCryoStatus,
-    hormoneStartDate, hormoneStatus,
-    comeOutDate, comeOutStatus,
-    socialTransitionStartDate, socialTransitionStatus,
-    hairTransplantDate, hairTransplantStatus,
-    ffsStartDate, ffsStatus,
-    topSurgeryStartDate, topStatus,
-    bottomSurgeryStartDate, bottomStatus,
-    nameChangeDate, nameChangeStatus,
-    laserStartDate, 
-    numberLaserAppointments, laserStatus,
-    counselingStartDate,
-    counselingDaysBetween,
-    counselingNumberSessions, counselingStatus,
-    speechTherapyStartDate,
-    speechTherapyNumberSessions,
-    speechTherapyDaysBetween, speechTherapyStatus,
-    consultationStartDate,
-    consultationNumberAppointments, consultationStatus,
-    bloodTestStartDate, bloodTestNumber, bloodTestStatus
+    MtFPlanObject
     ) {
 ganttChartJSON = GenerateMtFTransitionPlannerJSON(
-    spermCryoStartDate, spermCryoStatus,
-    hormoneStartDate, hormoneStatus,
-    comeOutDate, comeOutStatus,
-    socialTransitionStartDate, socialTransitionStatus,
-    hairTransplantDate, hairTransplantStatus,
-    ffsStartDate, ffsStatus,
-    topSurgeryStartDate, topStatus,
-    bottomSurgeryStartDate, bottomStatus,
-    nameChangeDate, nameChangeStatus,
-    laserStartDate, 
-    numberLaserAppointments, laserStatus,
-    counselingStartDate,
-    counselingDaysBetween,
-    counselingNumberSessions, counselingStatus,
-    speechTherapyStartDate,
-    speechTherapyNumberSessions,
-    speechTherapyDaysBetween, speechTherapyStatus,
-    consultationStartDate,
-    consultationNumberAppointments, consultationStatus,
-    bloodTestStartDate, bloodTestNumber, bloodTestStatus
+    MtFPlanObject
     );
 renderGanttChart( );
 document.getElementById('editPlanModalButton').style.display = "block";
@@ -94,59 +56,40 @@ document.getElementById('editPlanModalButton').style.display = "block";
 
 
 function GenerateMtFTransitionPlannerJSON(
-    spermCryoStartDate, spermCryoStatus,
-    hormoneStartDate, hormoneStatus,
-    comeOutDate, comeOutStatus,
-    socialTransitionStartDate, socialTransitionStatus,
-    hairTransplantDate, hairTransplantStatus,
-    ffsStartDate, ffsStatus,
-    topSurgeryStartDate, topStatus,
-    bottomSurgeryStartDate, bottomStatus,
-    nameChangeDate, nameChangeStatus,
-    laserStartDate, 
-    numberLaserAppointments, laserStatus,
-    counselingStartDate,
-    counselingDaysBetween,
-    counselingNumberSessions, counselingStatus,
-    speechTherapyStartDate,
-    speechTherapyNumberSessions,
-    speechTherapyDaysBetween, speechTherapyStatus,
-    consultationStartDate,
-    consultationNumberAppointments, consultationStatus,
-    bloodTestStartDate, bloodTestNumber, bloodTestStatus
+    MtFPlanObject
     ) {
 
 
     //Month is 0-indexed
-    var spermCryoStart = spermCryoStartDate;
+    var spermCryoStart = MtFPlanObject.spermCryoStartDate;
     var spermCryoEnd = new Date(spermCryoStart.getTime()+(14 * msInDay));
     
 
-    var hrtStart = hormoneStartDate;
-    var laserStart = laserStartDate;
+    var hrtStart = MtFPlanObject.hormoneStartDate;
+    var laserStart = MtFPlanObject.laserStartDate;
     
-    var comeOutStart = comeOutDate;
-    var comeOutEnd = new Date(comeOutDate.getTime()+(2 * msInDay));
+    var comeOutStart = MtFPlanObject.comeOutDate;
+    var comeOutEnd = new Date(MtFPlanObject.comeOutDate.getTime()+(2 * msInDay));
 
-    var socialTransitionStart = socialTransitionStartDate
-    var socialTransitionEnd = new Date(socialTransitionStartDate.getTime()+(365 * msInDay));
+    var socialTransitionStart = MtFPlanObject.socialTransitionStartDate
+    var socialTransitionEnd = new Date(MtFPlanObject.socialTransitionStartDate.getTime()+(365 * msInDay));
 
 
     var hrtEnd = new Date(hrtStart.getTime()+(1 * msInDay));
-    var hairTransplantStart = hairTransplantDate
-    var hairTransplantEnd = new Date(hairTransplantDate.getTime()+(1 * msInDay));
+    var hairTransplantStart = MtFPlanObject.hairTransplantDate
+    var hairTransplantEnd = new Date(MtFPlanObject.hairTransplantDate.getTime()+(1 * msInDay));
 
-    var ffsStart = ffsStartDate
+    var ffsStart = MtFPlanObject.ffsStartDate
     var ffsEnd = new Date(ffsStart.getTime()+(1 * msInDay));
 
-    var topStart = topSurgeryStartDate;
-    var topEnd = new Date(topSurgeryStartDate.getTime()+(1 * msInDay));
+    var topStart = MtFPlanObject.topSurgeryStartDate;
+    var topEnd = new Date(MtFPlanObject.topSurgeryStartDate.getTime()+(1 * msInDay));
 
-    var bottomStart = bottomSurgeryStartDate;
+    var bottomStart = MtFPlanObject.bottomSurgeryStartDate;
     var bottomEnd = new Date(bottomStart.getTime()+(1 * msInDay));
 
-    var nameChangeStart = nameChangeDate
-    var nameChangeEnd = new Date(nameChangeDate.getTime()+(90 * msInDay));
+    var nameChangeStart = MtFPlanObject.nameChangeDate
+    var nameChangeEnd = new Date(MtFPlanObject.nameChangeDate.getTime()+(90 * msInDay));
 
 
     var chartEnd = new Date(hrtStart.getTime()+(1200 * msInDay));
@@ -183,15 +126,15 @@ function GenerateMtFTransitionPlannerJSON(
 
 
     var tasks = [
-        {"startDate": spermCryoStart,"endDate": spermCryoEnd,"taskName": spermCryoLabel,"status":spermCryoStatus},
-        {"startDate": hrtStart,"endDate":hrtEnd,"taskName":hormonesLabel,"status":hormoneStatus},
-        {"startDate": nameChangeStart,"endDate":nameChangeEnd,"taskName":legalNameChange,"status":nameChangeStatus},
-        {"startDate": comeOutStart,"endDate":comeOutEnd,"taskName":comeOut,"status":comeOutStatus},
-        {"startDate": socialTransitionStart,"endDate":socialTransitionEnd,"taskName":socialTransition,"status":socialTransitionStatus},
-        {"startDate": hairTransplantStart,"endDate": hairTransplantEnd,"taskName": hairTransplantLabel,"status":hairTransplantStatus},
-        {"startDate": ffsStart,"endDate": ffsEnd,"taskName": ffsLabel,"status":ffsStatus},
-        {"startDate": topStart,"endDate": topEnd,"taskName": topSurgery,"status":topStatus},
-        {"startDate": bottomStart,"endDate": bottomEnd,"taskName": bottomSurgery,"status":bottomStatus},
+        {"startDate": spermCryoStart,"endDate": spermCryoEnd,"taskName": spermCryoLabel,"status":MtFPlanObject.spermCryoStatus},
+        {"startDate": hrtStart,"endDate":hrtEnd,"taskName":hormonesLabel,"status":MtFPlanObject.hormoneStatus},
+        {"startDate": nameChangeStart,"endDate":nameChangeEnd,"taskName":legalNameChange,"status":MtFPlanObject.nameChangeStatus},
+        {"startDate": comeOutStart,"endDate":comeOutEnd,"taskName":comeOut,"status":MtFPlanObject.comeOutStatus},
+        {"startDate": socialTransitionStart,"endDate":socialTransitionEnd,"taskName":socialTransition,"status":MtFPlanObject.socialTransitionStatus},
+        {"startDate": hairTransplantStart,"endDate": hairTransplantEnd,"taskName": hairTransplantLabel,"status":MtFPlanObject.hairTransplantStatus},
+        {"startDate": ffsStart,"endDate": ffsEnd,"taskName": ffsLabel,"status":MtFPlanObject.ffsStatus},
+        {"startDate": topStart,"endDate": topEnd,"taskName": topSurgery,"status":MtFPlanObject.topStatus},
+        {"startDate": bottomStart,"endDate": bottomEnd,"taskName": bottomSurgery,"status":MtFPlanObject.bottomStatus},
         {"startDate": hrtStart,"endDate": bodyFatStart,"taskName": bodyFat,"status":"BEFORE"},
         {"startDate": bodyFatStart,"endDate": bodyFatMaxEffect,"taskName": bodyFat,"status":"ONSET"},
         {"startDate": bodyFatMaxEffect,"endDate": chartEnd,"taskName": bodyFat,"status":"MAX-EFFECT"},
@@ -232,7 +175,7 @@ function GenerateMtFTransitionPlannerJSON(
 
     var lasersAptStart = [];
     var lasersAptEnd = [];
-    for(var i = 0; i < numberLaserAppointments; i++) {
+    for(var i = 0; i < MtFPlanObject.numberLaserAppointments; i++) {
         
         var daysBetweenApts = 30;
         lasersAptStart[i]  = new Date(laserStart.getTime()+(daysBetweenApts * i * msInDay));
@@ -247,37 +190,37 @@ function GenerateMtFTransitionPlannerJSON(
 
         
         lasersAptEnd[i] = new Date(lasersAptStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": lasersAptStart[i],"endDate":  lasersAptEnd[i],"taskName": lasersLabel,"status":laserStatus},)
+        tasks.push({"startDate": lasersAptStart[i],"endDate":  lasersAptEnd[i],"taskName": lasersLabel,"status":MtFPlanObject.laserStatus},)
     }
 
-    var counselingStarts = counselingStartDate;
+    var counselingStarts = MtFPlanObject.counselingStartDate;
     var counselingAptsStart = [];
     var counselingAptsEnd = [];
-    for(var i = 0; i < counselingNumberSessions; i++) {
+    for(var i = 0; i < MtFPlanObject.counselingNumberSessions; i++) {
         
-        var daysBetweenApts = counselingDaysBetween;
+        var daysBetweenApts = MtFPlanObject.counselingDaysBetween;
 
         counselingAptsStart[i] = new Date(counselingStarts.getTime()+(daysBetweenApts * i * msInDay));
         counselingAptsEnd[i] = new Date(counselingAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": counselingAptsStart[i],"endDate":  counselingAptsEnd[i],"taskName": counseling,"status":counselingStatus},)
+        tasks.push({"startDate": counselingAptsStart[i],"endDate":  counselingAptsEnd[i],"taskName": counseling,"status":MtFPlanObject.counselingStatus},)
     }
 
-    var speechTherapyStart = speechTherapyStartDate;
+    var speechTherapyStart = MtFPlanObject.speechTherapyStartDate;
     var speechTherapyAptsStart = [];
     var speechTherapyAptsEnd = [];
-    for(var i = 0; i < speechTherapyNumberSessions; i++) {
+    for(var i = 0; i < MtFPlanObject.speechTherapyNumberSessions; i++) {
         
-        var daysBetweenApts = speechTherapyDaysBetween;
+        var daysBetweenApts = MtFPlanObject.speechTherapyDaysBetween;
 
         speechTherapyAptsStart[i] = new Date(speechTherapyStart.getTime()+(daysBetweenApts * i * msInDay));
         speechTherapyAptsEnd[i] = new Date(speechTherapyAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": speechTherapyAptsStart[i],"endDate":  speechTherapyAptsEnd[i],"taskName": speechTherapySession,"status":speechTherapyStatus},)
+        tasks.push({"startDate": speechTherapyAptsStart[i],"endDate":  speechTherapyAptsEnd[i],"taskName": speechTherapySession,"status":MtFPlanObject.speechTherapyStatus},)
     }
 
-    var consultationStart = consultationStartDate;
+    var consultationStart = MtFPlanObject.consultationStartDate;
     var consultationAptsStart = [];
     var consultationAptsEnd = [];
-    for(var i = 0; i < consultationNumberAppointments; i++) {
+    for(var i = 0; i < MtFPlanObject.consultationNumberAppointments; i++) {
         
         var daysBetweenApts = 90;
         consultationAptsStart[i] = new Date(consultationStart.getTime()+(daysBetweenApts * i * msInDay));
@@ -287,13 +230,13 @@ function GenerateMtFTransitionPlannerJSON(
         }
 
         consultationAptsEnd[i] = new Date(consultationAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": consultationAptsStart[i],"endDate":  consultationAptsEnd[i],"taskName": consultation,"status":consultationStatus},)
+        tasks.push({"startDate": consultationAptsStart[i],"endDate":  consultationAptsEnd[i],"taskName": consultation,"status":MtFPlanObject.consultationStatus},)
     }
 
-    var bloodTestStart =  bloodTestStartDate;
+    var bloodTestStart =  MtFPlanObject.bloodTestStartDate;
     var bloodTestAptsStart = [];
     var bloodTestAptsEnd = [];
-    for(var i = 0; i < bloodTestNumber; i++) {
+    for(var i = 0; i < MtFPlanObject.bloodTestNumber; i++) {
         
         var daysBetweenApts = 30;
         bloodTestAptsStart[i] = new Date(bloodTestStart.getTime()+(daysBetweenApts * i * msInDay));
@@ -303,13 +246,11 @@ function GenerateMtFTransitionPlannerJSON(
         }
 
         bloodTestAptsEnd[i] = new Date(bloodTestAptsStart[i].getTime()+(1 * msInDay));
-        tasks.push({"startDate": bloodTestAptsStart[i],"endDate":  bloodTestAptsEnd[i],"taskName": bloodTest,"status":bloodTestStatus},)
+        tasks.push({"startDate": bloodTestAptsStart[i],"endDate":  bloodTestAptsEnd[i],"taskName": bloodTest,"status":MtFPlanObject.bloodTestStatus},)
     }
 
     //Remove any tasks that have the status of "won't do"
-
     //Remove all the onset/BEFORE/MAX effect tasks if hormones aren't selected
-
 
     var taskStatus = {
         "NEEDS-SCHEDULING" : "bar-needs-scheduling",
@@ -337,7 +278,7 @@ function GenerateMtFTransitionPlannerJSON(
     var jsonVersion = '1.0.1';
 
     var completedGanttChart = {
-        tasks, taskNames, taskStatus, minDate, maxDate, jsonVersion
+        tasks, taskNames, taskStatus, minDate, maxDate, jsonVersion, MtFPlanObject
     }
 
     return completedGanttChart;
