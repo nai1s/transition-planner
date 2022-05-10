@@ -72,7 +72,8 @@ ganttChartJSON = GenerateMtFTransitionPlannerJSON(
     MtFPlanObject
     );
 renderGanttChart( );
-document.getElementById('editPlanModalButton').style.display = "block";
+document.getElementById('editAndDownload').style.display = "block";
+document.getElementById('zoomControl').style.display = "block";
 }
 
 

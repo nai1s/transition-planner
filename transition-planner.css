@@ -4,6 +4,8 @@ html,body,#wrapper {
 	margin: 0px;
 }
 
+svg {background-color:white;}
+
 .chart {
 	font-family: Arial, sans-serif;
 	font-size: 12px;
