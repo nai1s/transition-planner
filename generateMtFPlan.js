@@ -19,6 +19,12 @@
     var socialTransition = "Social Transition";
     var speechTherapySession = "Speech Therapy Sessions";
 
+    var hairLossStartLabel = "Start Finasteride/Minoxidil";
+    var hairLossEffect = "Finasteride/Minoxidil Effects";
+    var prepStartLabel = "Start PReP";
+    var prepEffect = "PRep Effects";
+
+
 
 
     //Medical effects
@@ -39,6 +45,8 @@
 var taskNamesInOriginalOrder = [ comeOut, 
     spermCryoLabel, 
     hormonesLabel, 
+    hairLossStartLabel,
+    prepStartLabel,
     lasersLabel, 
     consultation, 
     counseling, 
@@ -52,6 +60,7 @@ var taskNamesInOriginalOrder = [ comeOut,
     topSurgery, 
     orchiectomySurgery, 
     bottomSurgery, 
+    hairLossEffect, prepEffect,
     bodyFat, muscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
     decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm  
 ];
@@ -145,6 +154,18 @@ function GenerateMtFTransitionPlannerJSON(
     var moodChangesStart = new Date(hrtStart.getTime()+(30 * msInDay));
     var moodChangesMaxEffect = new Date(hrtStart.getTime()+(360 * msInDay));
 
+    var prepStart = MtFPlanObject.prepDate;
+    var prepEnd = new Date(prepStart.getTime()+(1 * msInDay)); 
+
+    var prepEffectStart = new Date(prepStart.getTime()+(7 * msInDay)); 
+    var prepMaxEffect = new Date(prepStart.getTime()+(21 * msInDay));
+
+    var hairLossProductStart = MtFPlanObject.hairLossDate;
+        var hairLossProductEnd = new Date(hairLossProductStart.getTime()+(1 * msInDay));
+
+        var hairLossEffectStart = new Date(hairLossProductStart.getTime()+(90 * msInDay));
+        var hairLossMaxEffect = new Date(hairLossProductStart.getTime()+(180 * msInDay));
+
 
     var tasks = [];
 
@@ -173,6 +194,12 @@ function GenerateMtFTransitionPlannerJSON(
             {"startDate": hrtStart,"endDate":hrtEnd,"taskName":hormonesLabel,"status":MtFPlanObject.hormoneStatus},
        
         );
+    }
+    if (MtFPlanObject.hairLossStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(hairLossStartLabel);
+    }
+    if (MtFPlanObject.prepStatus != "WILL-NOT-DO"){
+        taskNamesToUse.push(prepStartLabel);
     }
     if (MtFPlanObject.laserStatus != "WILL-NOT-DO"){
         taskNamesToUse.push(lasersLabel);
@@ -369,6 +396,31 @@ function GenerateMtFTransitionPlannerJSON(
             {"startDate": hrtStart,"endDate": chartEnd,"taskName": maleSexDysfunction,"status":"VARIABLE"},
             {"startDate": hrtStart,"endDate": chartEnd,"taskName": decreasedSperm,"status":"VARIABLE"},
       
+        );
+    }
+
+    if (MtFPlanObject.hairLossStatus != "WILL-NOT-DO"){
+
+        taskNamesToUse.push(hairLossEffect);
+        tasks.push(
+            {"startDate": hairLossProductStart,"endDate": hairLossProductEnd,"taskName": hairLossStartLabel,"status":MtFPlanObject.hairLossStatus},
+            {"startDate": hairLossProductStart,"endDate": hairLossEffectStart,"taskName": hairLossEffect,"status":"BEFORE"},
+            {"startDate": hairLossEffectStart,"endDate": hairLossMaxEffect,"taskName": hairLossEffect,"status":"ONSET"},
+            {"startDate": hairLossMaxEffect,"endDate": chartEnd,"taskName": hairLossEffect,"status":"MAX-EFFECT"},
+            
+        );
+    }
+
+    if (MtFPlanObject.prepStatus != "WILL-NOT-DO"){
+
+        taskNamesToUse.push(prepEffect);
+
+        tasks.push(
+            {"startDate": prepStart,"endDate": prepEnd,"taskName": prepStartLabel,"status":MtFPlanObject.prepStatus},
+            {"startDate": prepStart,"endDate": prepEffectStart,"taskName": prepEffect,"status":"BEFORE"},
+            {"startDate": prepEffectStart,"endDate": prepMaxEffect,"taskName": prepEffect,"status":"ONSET"},
+            {"startDate": prepMaxEffect,"endDate": chartEnd,"taskName": prepEffect,"status":"MAX-EFFECT"},
+            
         );
     }
         

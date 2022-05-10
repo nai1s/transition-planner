@@ -19,7 +19,11 @@ function MtFPlanObject(    spermCryoStartDate, spermCryoStatus,
     consultationNumberAppointments, consultationStatus,
     bloodTestStartDate, bloodTestNumber, bloodTestStatus,
     orchiectomyDate, orchiectomyStatus,
-    trachealShaveDate, trachealShaveStatus) {
+    trachealShaveDate, trachealShaveStatus,
+    hairLossDate, hairLossStatus,
+    prepDate, prepStatus
+    
+    ) {
         this.spermCryoStartDate = spermCryoStartDate, 
         this.spermCryoStatus=  spermCryoStatus ;
         this.hormoneStartDate=  hormoneStartDate ; 
@@ -60,6 +64,10 @@ function MtFPlanObject(    spermCryoStartDate, spermCryoStatus,
         this.orchiectomyStatus = orchiectomyStatus;
         this.trachealShaveDate = trachealShaveDate;
         this.trachealShaveStatus = trachealShaveStatus;
+        this.hairLossDate = hairLossDate;
+        this.hairLossStatus = hairLossStatus;
+        this.prepDate = prepDate;
+        this.prepStatus = prepStatus;
     }
 
     //Define some manual table elements to collect
@@ -81,7 +89,9 @@ var questionsRoundOne =
   "Consult with a physician?",
   "Get regular blood tests?",
   "Seek an Orchiectomy Surgery?",
-  "Seek Tracheal Shave Surgery?"
+  "Seek Tracheal Shave Surgery?",
+  "Take Hair Loss Products (Minoxidil/Finasteride)?",
+  "Take PReP (HIV pre-exposure prophylaxis)?"
  ]
 
  function getAnswersRoundOne() {
@@ -101,9 +111,14 @@ var questionsRoundOne =
             ganttChartJSON.MtFPlanObject.consultationStatus,
             ganttChartJSON.MtFPlanObject.bloodTestStatus,
             ganttChartJSON.MtFPlanObject.orchiectomyStatus,
-            ganttChartJSON.MtFPlanObject.trachealShaveStatus]
+            ganttChartJSON.MtFPlanObject.trachealShaveStatus,
+            ganttChartJSON.MtFPlanObject.hairLossStatus,
+            ganttChartJSON.MtFPlanObject.prepStatus
+        ]
     }
     else return [
+    "NEEDS-SCHEDULING",
+    "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
     "NEEDS-SCHEDULING",
@@ -140,7 +155,9 @@ var questionsRoundOne =
    "Start Physician Consultations?",
    "Start Blood Tests?",
    "Schedule Orchiectomy?",
-   "Schedule Tracheal Shave?"
+   "Schedule Tracheal Shave?",
+   "Start Hair Loss Treatments (Finasteride/Minoxidil)?",
+   "Start PReP?"
  ]
 
 
@@ -163,6 +180,8 @@ var questionsRoundOne =
             ganttChartJSON.MtFPlanObject.bloodTestStartDate,
             ganttChartJSON.MtFPlanObject.orchiectomyDate,
             ganttChartJSON.MtFPlanObject.trachealShaveDate,
+            ganttChartJSON.MtFPlanObject.hairLossDate,
+            ganttChartJSON.MtFPlanObject.prepDate,
             
         ]
     }
@@ -186,6 +205,8 @@ var questionsRoundOne =
         new Date(today.getTime()+(1 * msInDay)),
         new Date(today.getTime()+(450 * msInDay)),
         new Date(today.getTime()+(550 * msInDay)),
+        new Date(today.getTime()+(1 * msInDay)),
+        new Date(today.getTime()+(1 * msInDay)),
         ]
     }
 }
