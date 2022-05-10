@@ -51,8 +51,8 @@ steps:
       containerRegistry: 'DockerHub'
       repository: 'swarmidentity/tranzplanz'
       command: 'build'
-      buildContext: '$(workingDir)/nodejs'
-      Dockerfile: '$(workingDir)/nodejs/Dockerfile'
+      buildContext: '$(workingDir)/'
+      Dockerfile: '$(workingDir)/Dockerfile'
       tags: |
         $(IMAGE_TAGS)
   
