@@ -6,6 +6,10 @@ html,body,#wrapper {
 
 svg {background-color:white;}
 
+.onHoverText {
+	text-decoration: underline;
+}
+
 .chart {
 	font-family: Arial, sans-serif;
 	font-size: 12px;

@@ -37,6 +37,7 @@ function drawSingleLabel(statusLabel, className, innerIndex, svg, height, margin
 	}
 	
 	svg.append("text")
+		.attr("class", "onHoverText")
 	 .attr("text-anchor", "start")
 	 .attr("x", - margin.left + 10 + 90 * Math.floor(innerIndex / 6) )
 	 .attr("y", height - 30 + 15 * innerIndex - 45 * Math.floor(innerIndex / 6))
@@ -51,12 +52,12 @@ function drawCommonLabels(svg, height, margin) {
 
 	var innerIndex = 0;
 
-	svg.append("text")
-	 .attr("text-anchor", "start")
-	 .attr("x", - margin.left + 10)
-	 .attr("y", height - 50)
-	 .attr("stroke", '0x000000')
-	 .text('Mouse Over to see detail:')
+	// svg.append("text")
+	//  .attr("text-anchor", "start")
+	//  .attr("x", - margin.left + 10)
+	//  .attr("y", height - 50)
+	//  .attr("stroke", '0x000000')
+	//  .text('Mouse Over to see detail:')
 
 	for (const [key, value] of Object.entries(taskStatusTypes)) {
 		drawSingleLabel(key, "." + value, innerIndex, svg, height, margin);
