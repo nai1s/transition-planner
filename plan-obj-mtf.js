@@ -72,7 +72,7 @@ function MtFPlanObject(    spermCryoStartDate, spermCryoStatus,
 
     //Define some manual table elements to collect
 //Are you planning to:
-var questionsRoundOne = 
+var questionsRoundOneMtF = 
 [ 
   "Freeze sperm prior to starting hormones?",
   "Take feminizing hormones (HRT)?",
@@ -94,7 +94,7 @@ var questionsRoundOne =
   "Take PReP (HIV pre-exposure prophylaxis)?"
  ]
 
- function getAnswersRoundOne() {
+ function getAnswersRoundOneMtF() {
     if (ganttChartJSON != null) {
         return [ganttChartJSON.MtFPlanObject.spermCryoStatus,
             ganttChartJSON.MtFPlanObject.hormoneStatus,
@@ -139,7 +139,7 @@ var questionsRoundOne =
 }
 
  //When will you:
- var questionsRoundTwo = [
+ var questionsRoundTwoMtF = [
    "Start sperm preservation? This can take 2-3 weeks.",
    "Start HRT? If you are preserving sperm you should wait until that's finished to start HRT.",
    "Come out publicly?",
@@ -161,7 +161,7 @@ var questionsRoundOne =
  ]
 
 
- function getAnswersRoundTwo() {
+ function getAnswersRoundTwoMtF() {
     if (ganttChartJSON != null) {
         return [
             ganttChartJSON.MtFPlanObject.spermCryoStartDate,
@@ -212,16 +212,16 @@ var questionsRoundOne =
 }
  //How many:
 
- var questionsRoundThree = [
+ var questionsRoundThreeMtF = [
    "Laser Sessions are you planning? 6-12 are common to start with occasional followups, but sometimes more are needed.",
-   "Counseling Sessions are you planning? If you don't know just leave this at 50.",
+   "Counseling Sessions are you planning? If you don't know just leave this at 80.",
    "Speech Therapy Sessions are you planning?",
    "Consultations are you planning? These drop off in frequency over time and are usually every 3 months to start.",
     "Blood Tests are you planning? Typically these are once a month to start and less frequent over time."
  ]
 
 
- function getAnswersRoundThree() {
+ function getAnswersRoundThreeMtF() {
     if (ganttChartJSON != null) {
         return [
             ganttChartJSON.MtFPlanObject.numberLaserAppointments,
@@ -244,12 +244,12 @@ var questionsRoundOne =
 
 //How frequently:
 
-var questionsRoundFour = [
+var questionsRoundFourMtF = [
   "Counseling Sessions?",
   "Speech Therapy Sessions?"
 ]
 
-function getAnswersRoundFour() {
+function getAnswersRoundFourMtF() {
     if (ganttChartJSON != null) {
         return [
             ganttChartJSON.MtFPlanObject.counselingDaysBetween,

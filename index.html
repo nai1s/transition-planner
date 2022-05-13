@@ -76,7 +76,10 @@
                             <h4 class="indigo fw-600 fs-m3 mb-5">Generate New <span class="red">Female</span> to <span class="blue">Male</span> Transition Plan (coming soon)</h4> 
                             
                                 <!-- Trigger/Open The New FtM Modal -->
-        
+                                <div id="ftmModal" class="ftm-modal fw-600 opacity-100">
+                                    <div id="ftmQuestions" class="ftm-modal-content">
+                                    </div>
+                                    </div>
                                     <button id="newFtMModalButton">Generate New FtM Plan</button>
                                 
                         </div>
@@ -182,11 +185,14 @@
 
 	<script type="text/javascript" src="transition-planner.js"></script>
     <script type="text/javascript" src="plan-obj-mtf.js"></script>
+    <script type="text/javascript" src="plan-obj-ftm.js"></script>
     <script type="text/javascript" src="json-upload.js"></script>
     <script type="text/javascript" src="gantt-chart-d3.js"></script>
     <script type="text/javascript" src="saveSvgAsPng.js"></script>
     <script type="text/javascript" src="generateMtFPlan.js"></script>
     <script type="text/javascript" src="modal-newMtFPlan.js"></script>
+    <script type="text/javascript" src="generateFtMPlan.js"></script>
+    <script type="text/javascript" src="modal-newFtMPlan.js"></script>
     <script type="text/javascript" src="modal-editPlan.js"></script>
     
     <script type="text/javascript" src="json-download.js"></script>

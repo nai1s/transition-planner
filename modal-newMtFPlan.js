@@ -3,23 +3,23 @@
 
 
 
-var allQuestionHTML = "";
+var allQuestionHTMLMtF = "";
 
-var roundOneResponses = [];
-var roundTwoResponses = [];
-var roundThreeResponses = [];
-var roundFourResponses = [];
+var roundOneResponsesMtF = [];
+var roundTwoResponsesMtF = [];
+var roundThreeResponsesMtF = [];
+var roundFourResponsesMtF = [];
 
-var answersRoundOne = [];
-var answersRoundTwo = [];
-var answersRoundThree = [];
-var answersRoundFour = [];
+var answersRoundOneMtF = [];
+var answersRoundTwoMtF = [];
+var answersRoundThreeMtF = [];
+var answersRoundFourMtF = [];
 
 function initMtFModal() {
-   answersRoundOne = getAnswersRoundOne();
-   answersRoundTwo = getAnswersRoundTwo();
-   answersRoundThree = getAnswersRoundThree();
-   answersRoundFour = getAnswersRoundFour();
+   answersRoundOneMtF = getAnswersRoundOneMtF();
+   answersRoundTwoMtF = getAnswersRoundTwoMtF();
+   answersRoundThreeMtF = getAnswersRoundThreeMtF();
+   answersRoundFourMtF = getAnswersRoundFourMtF();
 }
 
 
@@ -29,29 +29,29 @@ function parseMtFQuestionTableToJSON(iterator) {
   for(var taskIterator = 0; taskIterator < tableLength - 1; taskIterator++) {
       if (iterator == 0) {
         var statusSelect = document.getElementById("question-round-one-status-select-" + taskIterator)
-        roundOneResponses.push(statusSelect.options[statusSelect.selectedIndex].value);
+        roundOneResponsesMtF.push(statusSelect.options[statusSelect.selectedIndex].value);
       }
       else if (iterator == 1) {
         var newDate = new Date(document.getElementById("mtf-plan-start-date-" + taskIterator).value);
-        roundTwoResponses.push(newDate);
+        roundTwoResponsesMtF.push(newDate);
       }
       else if (iterator == 2) {
         var number = document.getElementById("mtf-plan-number-" + taskIterator).value;
-        roundThreeResponses.push(number)
+        roundThreeResponsesMtF.push(number)
       }
       else if (iterator == 3) {
         var number = document.getElementById("mtf-plan-freq-" + taskIterator).value;
-        roundFourResponses.push(number)
+        roundFourResponsesMtF.push(number)
       }
 
   }
 }
 
 
-function formatTableCellFromObjRoundOne(question, index, arr) {
+function formatTableCellFromObjRoundOneMtF(question, index, arr) {
 
 
-  var answer = answersRoundOne[index];
+  var answer = answersRoundOneMtF[index];
 
   var selectStatusOptionHTML = ""
 
@@ -88,51 +88,51 @@ function formatTableCellFromObjRoundOne(question, index, arr) {
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><select name='question-round-one-status-" + index + "' id='question-round-one-status-select-" + index + "'>" + selectStatusOptionHTML + "</select></td>";
-  allQuestionHTML += tableRow;
+  allQuestionHTMLMtF += tableRow;
 }
 
-function formatTableCellFromObjRoundTwo(question,index,arr) {
-  var answer = answersRoundTwo[index];
+function formatTableCellFromObjRoundTwoMtF(question,index,arr) {
+  var answer = answersRoundTwoMtF[index];
   var disabledText = "";
-  if (roundOneResponses[index] === "WILL-NOT-DO") {
+  if (roundOneResponsesMtF[index] === "WILL-NOT-DO") {
     disabledText = " disabled";
   }
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='date' id='mtf-plan-start-date-" + index + "' value='" + answer.toISOString().split('T')[0] + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLMtF += tableRow;
 }
 
-function formatTableCellFromObjRoundThree(question,index,arr) {
-  var answer = answersRoundThree[index];
+function formatTableCellFromObjRoundThreeMtF(question,index,arr) {
+  var answer = answersRoundThreeMtF[index];
   var disabledText = "";
 
   //Mapping from earlier questions
   var roundOneQuestionIndex = [9, 10, 11, 12, 13]
 
-  if (roundOneResponses[roundOneQuestionIndex[index]] === "WILL-NOT-DO") {
+  if (roundOneResponsesMtF[roundOneQuestionIndex[index]] === "WILL-NOT-DO") {
     disabledText = " disabled";
   }
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='number' id='mtf-plan-number-" + index + "' value='" + answer + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLMtF += tableRow;
 }
 
-function formatTableCellFromObjRoundFour(question,index,arr) {
-  var answer = answersRoundFour[index];
+function formatTableCellFromObjRoundFourMtF(question,index,arr) {
+  var answer = answersRoundFourMtF[index];
   var disabledText = "";
 
   //Mapping from earlier questions
   var roundOneQuestionIndex = [10, 11]
 
-  if (roundOneResponses[roundOneQuestionIndex[index]] === "WILL-NOT-DO") {
+  if (roundOneResponsesMtF[roundOneQuestionIndex[index]] === "WILL-NOT-DO") {
     disabledText = " disabled";
   }
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='number' id='mtf-plan-freq-" + index + "' value='" + answer + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLMtF += tableRow;
 }
 
 function nextMtFButton(iterator) {
@@ -142,63 +142,63 @@ function nextMtFButton(iterator) {
   if (iterator == 4) {
     //Use all the responses, there will be a lot of them
     thisMtFPlan = new MtFPlanObject(
-      roundTwoResponses[0], roundOneResponses[0],
-      roundTwoResponses[1], roundOneResponses[1],
-      roundTwoResponses[2], roundOneResponses[2],
-      roundTwoResponses[3], roundOneResponses[3],
-      roundTwoResponses[4], roundOneResponses[4],
-      roundTwoResponses[5], roundOneResponses[5],
-      roundTwoResponses[6], roundOneResponses[6],
-      roundTwoResponses[7], roundOneResponses[7],
-      roundTwoResponses[8], roundOneResponses[8],
-      roundTwoResponses[9], 
-      roundThreeResponses[0], roundOneResponses[9],
-    roundTwoResponses[10],
-    roundFourResponses[0],
-    roundThreeResponses[1], roundOneResponses[10],
-    roundTwoResponses[11],
-    roundThreeResponses[2],
-    roundFourResponses[1], roundOneResponses[11],
-    roundTwoResponses[12],
-    roundThreeResponses[3], roundOneResponses[12],
-    roundTwoResponses[13], roundThreeResponses[4], roundOneResponses[13],
-      roundTwoResponses[14], roundOneResponses[14],
-      roundTwoResponses[15], roundOneResponses[15],
-      roundTwoResponses[16], roundOneResponses[16],
-      roundTwoResponses[17], roundOneResponses[17]
+      roundTwoResponsesMtF[0], roundOneResponsesMtF[0],
+      roundTwoResponsesMtF[1], roundOneResponsesMtF[1],
+      roundTwoResponsesMtF[2], roundOneResponsesMtF[2],
+      roundTwoResponsesMtF[3], roundOneResponsesMtF[3],
+      roundTwoResponsesMtF[4], roundOneResponsesMtF[4],
+      roundTwoResponsesMtF[5], roundOneResponsesMtF[5],
+      roundTwoResponsesMtF[6], roundOneResponsesMtF[6],
+      roundTwoResponsesMtF[7], roundOneResponsesMtF[7],
+      roundTwoResponsesMtF[8], roundOneResponsesMtF[8],
+      roundTwoResponsesMtF[9], 
+      roundThreeResponsesMtF[0], roundOneResponsesMtF[9],
+    roundTwoResponsesMtF[10],
+    roundFourResponsesMtF[0],
+    roundThreeResponsesMtF[1], roundOneResponsesMtF[10],
+    roundTwoResponsesMtF[11],
+    roundThreeResponsesMtF[2],
+    roundFourResponsesMtF[1], roundOneResponsesMtF[11],
+    roundTwoResponsesMtF[12],
+    roundThreeResponsesMtF[3], roundOneResponsesMtF[12],
+    roundTwoResponsesMtF[13], roundThreeResponsesMtF[4], roundOneResponsesMtF[13],
+      roundTwoResponsesMtF[14], roundOneResponsesMtF[14],
+      roundTwoResponsesMtF[15], roundOneResponsesMtF[15],
+      roundTwoResponsesMtF[16], roundOneResponsesMtF[16],
+      roundTwoResponsesMtF[17], roundOneResponsesMtF[17]
       );
 
       generateAndRenderMtFPlan(thisMtFPlan);
     mtfModal.style.display = "none";
   }
 
-  formatTableQuestions(iterator);
+  formatTableQuestionsMtF(iterator);
 }
 
-function formatTableQuestions(iterator) {
+function formatTableQuestionsMtF(iterator) {
   var div = document.getElementById('mtfQuestions');
-  allQuestionHTML = '<table id="mtfQuestionTable" class="table table-striped">';
+  allQuestionHTMLMtF = '<table id="mtfQuestionTable" class="table table-striped">';
   if (iterator == 0) {
-    allQuestionHTML += '<tr><th>Are you planning to:</th><th>Answer</th></tr>'
-    questionsRoundOne.forEach(formatTableCellFromObjRoundOne)
+    allQuestionHTMLMtF += '<tr><th>Are you planning to:</th><th>Answer</th></tr>'
+    questionsRoundOneMtF.forEach(formatTableCellFromObjRoundOneMtF)
   }
   else if (iterator == 1) {
-    allQuestionHTML += '<tr><th>When will you:</th><th>Date</th></tr>'
-    questionsRoundTwo.forEach(formatTableCellFromObjRoundTwo)
+    allQuestionHTMLMtF += '<tr><th>When will you:</th><th>Date</th></tr>'
+    questionsRoundTwoMtF.forEach(formatTableCellFromObjRoundTwoMtF)
   }
   else if (iterator == 2) {
-    allQuestionHTML += '<tr><th>How Many:</th><th>Date</th></tr>'
-    questionsRoundThree.forEach(formatTableCellFromObjRoundThree)
+    allQuestionHTMLMtF += '<tr><th>How Many:</th><th>Date</th></tr>'
+    questionsRoundThreeMtF.forEach(formatTableCellFromObjRoundThreeMtF)
   }
   else if (iterator == 3) {
-    allQuestionHTML += '<tr><th>How Many Days Between:</th><th>Date</th></tr>'
-    questionsRoundFour.forEach(formatTableCellFromObjRoundFour)
+    allQuestionHTMLMtF += '<tr><th>How Many Days Between:</th><th>Date</th></tr>'
+    questionsRoundFourMtF.forEach(formatTableCellFromObjRoundFourMtF)
   }
 
 
-  allQuestionHTML += "</table>"
+  allQuestionHTMLMtF += "</table>"
 
-    allQuestionHTML += "<button id='nextMtFQuestion' onClick=nextMtFButton(" + iterator + ")>Next</button>"
+    allQuestionHTMLMtF += "<button id='nextMtFQuestion' onClick=nextMtFButton(" + iterator + ")>Next</button>"
   
 
   // else if (iterator == 3) {
@@ -206,7 +206,7 @@ function formatTableQuestions(iterator) {
   // }
 
 
-  div.innerHTML = allQuestionHTML;
+  div.innerHTML = allQuestionHTMLMtF;
 
   
 
@@ -218,15 +218,12 @@ var mtfModal = document.getElementById("mtfModal");
 
 
 // Get the button that opens the modal
-var btn = document.getElementById("newMtFModalButton");
-
-var newPlanButton = document.getElementById("generateMtF");
-
+var mtfbtn = document.getElementById("newMtFModalButton");
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+mtfbtn.onclick = function() {
   initMtFModal();
-  formatTableQuestions(0);
+  formatTableQuestionsMtF(0);
   mtfModal.style.display = "block";
 }
 
