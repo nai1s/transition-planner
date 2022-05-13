@@ -60,9 +60,9 @@ var taskNamesInOriginalOrder = [ comeOut,
     topSurgery, 
     orchiectomySurgery, 
     bottomSurgery, 
-    hairLossEffect, prepEffect,
     bodyFat, muscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
-    decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm  
+    decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm,
+    hairLossEffect, prepEffect  
 ];
 
 function generateAndRenderMtFPlan(
