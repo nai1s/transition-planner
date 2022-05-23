@@ -170,6 +170,8 @@ function nextMtFButton(iterator) {
 
       generateAndRenderMtFPlan(thisMtFPlan);
     mtfModal.style.display = "none";
+    ftmDiv.style.display= "none"; //Hide the other div
+    hideTopButtonsAndScrollDown();
   }
 
   formatTableQuestionsMtF(iterator);
@@ -198,7 +200,7 @@ function formatTableQuestionsMtF(iterator) {
 
   allQuestionHTMLMtF += "</table>"
 
-    allQuestionHTMLMtF += "<button id='nextMtFQuestion' onClick=nextMtFButton(" + iterator + ")>Next</button>"
+    allQuestionHTMLMtF += "<button class='button' id='nextMtFQuestion' onClick=nextMtFButton(" + iterator + ")>Next</button>"
   
 
   // else if (iterator == 3) {
@@ -215,6 +217,7 @@ function formatTableQuestionsMtF(iterator) {
 
 // Get the modal
 var mtfModal = document.getElementById("mtfModal");
+var ftmDiv = document.getElementById("ftmDiv");
 
 
 // Get the button that opens the modal

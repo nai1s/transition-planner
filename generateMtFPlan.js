@@ -20,7 +20,7 @@
     var speechTherapySession = "Speech Therapy Sessions";
 
     var hairLossStartLabel = "Start Finasteride/Minoxidil";
-    var hairLossEffect = "Finasteride/Minoxidil Effects";
+    var hairLossEffect = "Finasteride/Minoxidil Effect";
     var prepStartLabel = "Start PReP";
     var prepEffect = "PRep Effects";
 
@@ -39,7 +39,7 @@
     var moodChanges = "Mood Changes";
     var baldness = "Baldness Loss Stops";
     var bodyHair = "Thinning Body Hair";
-    var maleSexDysfunction = "Male sexual dysfunction";
+    var maleSexDysfunction = "Orgasm Difficulty";
     var decreasedSperm = "Lower sperm production";
 
 var taskNamesInOriginalOrder = [ comeOut, 

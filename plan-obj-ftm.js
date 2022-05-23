@@ -96,15 +96,15 @@ var questionsRoundOneFtM =
  function getAnswersRoundTwoFtM() {
     if (ganttChartJSON != null) {
         return [
-            ganttChartJSON.FtMPlanObject.hormoneStartDate,
-            ganttChartJSON.FtMPlanObject.comeOutDate,
-            ganttChartJSON.FtMPlanObject.socialTransitionStartDate,
-            ganttChartJSON.FtMPlanObject.topSurgeryStartDate,
-            ganttChartJSON.FtMPlanObject.bottomSurgeryStartDate,
-            ganttChartJSON.FtMPlanObject.nameChangeDate,
-            ganttChartJSON.FtMPlanObject.counselingStartDate,
-            ganttChartJSON.FtMPlanObject.consultationStartDate,
-            ganttChartJSON.FtMPlanObject.bloodTestStartDate,
+            new Date(ganttChartJSON.FtMPlanObject.hormoneStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.comeOutDate),
+            new Date(ganttChartJSON.FtMPlanObject.socialTransitionStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.topSurgeryStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.bottomSurgeryStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.nameChangeDate),
+            new Date(ganttChartJSON.FtMPlanObject.counselingStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.consultationStartDate),
+            new Date(ganttChartJSON.FtMPlanObject.bloodTestStartDate),
             
         ]
     }

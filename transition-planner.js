@@ -22,3 +22,7 @@ function renderGanttChart() {
         document.getElementById('graphEndDate').valueAsDate]);
     gantt(ganttChartJSON.tasks);
 }
+
+function hideTopButtonsAndScrollDown() {
+    window.scrollTo(0, document.body.scrollHeight);
+}
