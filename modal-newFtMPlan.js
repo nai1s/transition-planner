@@ -3,7 +3,7 @@
 
 
 
-var allQuestionHTML = "";
+var allQuestionHTMLFtm = "";
 
 var roundOneResponsesFtM = [];
 var roundTwoResponsesFtM = [];
@@ -88,7 +88,7 @@ function formatTableCellFromObjRoundOneFtM(question, index, arr) {
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><select name='question-round-one-status-" + index + "' id='question-round-one-status-select-" + index + "'>" + selectStatusOptionHTML + "</select></td>";
-  allQuestionHTML += tableRow;
+  allQuestionHTMLFtm += tableRow;
 }
 
 function formatTableCellFromObjRoundTwoFtM(question,index,arr) {
@@ -100,7 +100,7 @@ function formatTableCellFromObjRoundTwoFtM(question,index,arr) {
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='date' id='ftm-plan-start-date-" + index + "' value='" + answer.toISOString().split('T')[0] + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLFtm += tableRow;
 }
 
 function formatTableCellFromObjRoundThreeFtM(question,index,arr) {
@@ -116,7 +116,7 @@ function formatTableCellFromObjRoundThreeFtM(question,index,arr) {
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='number' id='ftm-plan-number-" + index + "' value='" + answer + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLFtm += tableRow;
 }
 
 function formatTableCellFromObjRoundFourFtM(question,index,arr) {
@@ -132,7 +132,7 @@ function formatTableCellFromObjRoundFourFtM(question,index,arr) {
   var tableRow = "<tr>" + 
   "<td>" + question + "</td>" +
   "<td><input type='number' id='ftm-plan-freq-" + index + "' value='" + answer + "'" + disabledText + "></input></td>"
-  allQuestionHTML += tableRow;
+  allQuestionHTMLFtm += tableRow;
 }
 
 function nextFtMButton(iterator) {
@@ -160,33 +160,33 @@ function nextFtMButton(iterator) {
     ftmModal.style.display = "none";
   }
 
-  formatTableQuestions(iterator);
+  formatTableQuestionsFtM(iterator);
 }
 
-function formatTableQuestions(iterator) {
+function formatTableQuestionsFtM(iterator) {
   var div = document.getElementById('ftmQuestions');
-  allQuestionHTML = '<table id="ftmQuestionTable" class="table table-striped">';
+  allQuestionHTMLFtm = '<table id="ftmQuestionTable" class="table table-striped">';
   if (iterator == 0) {
-    allQuestionHTML += '<tr><th>Are you planning to:</th><th>Answer</th></tr>'
+    allQuestionHTMLFtm += '<tr><th>Are you planning to:</th><th>Answer</th></tr>'
     questionsRoundOneFtM.forEach(formatTableCellFromObjRoundOneFtM)
   }
   else if (iterator == 1) {
-    allQuestionHTML += '<tr><th>When will you:</th><th>Date</th></tr>'
+    allQuestionHTMLFtm += '<tr><th>When will you:</th><th>Date</th></tr>'
     questionsRoundTwoFtM.forEach(formatTableCellFromObjRoundTwoFtM)
   }
   else if (iterator == 2) {
-    allQuestionHTML += '<tr><th>How Many:</th><th>Date</th></tr>'
+    allQuestionHTMLFtm += '<tr><th>How Many:</th><th>Date</th></tr>'
     questionsRoundThreeFtM.forEach(formatTableCellFromObjRoundThreeFtM)
   }
   else if (iterator == 3) {
-    allQuestionHTML += '<tr><th>How Many Days Between:</th><th>Date</th></tr>'
+    allQuestionHTMLFtm += '<tr><th>How Many Days Between:</th><th>Date</th></tr>'
     questionsRoundFourFtM.forEach(formatTableCellFromObjRoundFourFtM)
   }
 
 
-  allQuestionHTML += "</table>"
+  allQuestionHTMLFtm += "</table>"
 
-    allQuestionHTML += "<button id='nextFtMQuestion' onClick=nextFtMButton(" + iterator + ")>Next</button>"
+    allQuestionHTMLFtm += "<button id='nextFtMQuestion' onClick=nextFtMButton(" + iterator + ")>Next</button>"
   
 
   // else if (iterator == 3) {
@@ -194,7 +194,7 @@ function formatTableQuestions(iterator) {
   // }
 
 
-  div.innerHTML = allQuestionHTML;
+  div.innerHTML = allQuestionHTMLFtm;
 
   
 
@@ -206,15 +206,12 @@ var ftmModal = document.getElementById("ftmModal");
 
 
 // Get the button that opens the modal
-var btn = document.getElementById("newFtMModalButton");
-
-var newPlanButton = document.getElementById("generateFtM");
-
+var ftmbtn = document.getElementById("newFtMModalButton");
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+ftmbtn.onclick = function() {
   initFtMModal();
-  formatTableQuestions(0);
+  formatTableQuestionsFtM(0);
   ftmModal.style.display = "block";
 }
 

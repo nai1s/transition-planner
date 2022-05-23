@@ -1,7 +1,7 @@
 {
-  "name": "louis-racette",
+  "name": "tranz-planz",
   "version": "1.0.0",
-  "description": "Personal site",
+  "description": "Transition Planning Made Slightly Easier",
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.2",

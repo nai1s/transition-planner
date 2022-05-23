@@ -112,7 +112,6 @@ var questionsRoundOneFtM =
         var today = new Date();
 
         return [
-        today,
         new Date(today.getTime()+(14 * msInDay)),
         new Date(today.getTime()+(14 * msInDay)),
         new Date(today.getTime()+(14 * msInDay)),
