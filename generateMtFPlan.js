@@ -96,7 +96,7 @@ function GenerateMtFTransitionPlannerJSON(
     var comeOutEnd = new Date(MtFPlanObject.comeOutDate.getTime()+(2 * msInDay));
 
     var socialTransitionStart = MtFPlanObject.socialTransitionStartDate
-    var socialTransitionEnd = new Date(MtFPlanObject.socialTransitionStartDate.getTime()+(365 * msInDay));
+    var socialTransitionEnd = new Date(MtFPlanObject.socialTransitionStartDate.getTime()+(720 * msInDay));
 
 
     var hrtEnd = new Date(hrtStart.getTime()+(1 * msInDay));

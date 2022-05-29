@@ -63,7 +63,7 @@ function GenerateFtMTransitionPlannerJSON(
     var comeOutEnd = new Date(FtMPlanObject.comeOutDate.getTime()+(2 * msInDay));
 
     var socialTransitionStart = FtMPlanObject.socialTransitionStartDate
-    var socialTransitionEnd = new Date(FtMPlanObject.socialTransitionStartDate.getTime()+(365 * msInDay));
+    var socialTransitionEnd = new Date(FtMPlanObject.socialTransitionStartDate.getTime()+(720 * msInDay));
 
 
     var hrtEnd = new Date(hrtStart.getTime()+(1 * msInDay));
