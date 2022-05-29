@@ -179,3 +179,18 @@ input[type="file"] {
 	text-decoration: none;
 	cursor: pointer;
   }
+
+  /* unvisited link */
+a:link {
+	color: red;
+  }
+  
+  /* visited link */
+  a:visited {
+	color: purple;
+  }
+  
+  /* mouse over link */
+  a:hover {
+	color: white;
+  }
