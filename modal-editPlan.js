@@ -16,7 +16,14 @@ btn.onclick = function() {
 
 // When the user clicks on <span> (x), close the modal
 finalizeEdits.onclick = function() {
-  parseTableToJSON();
+
+  var isMtF = false;
+  if (ganttChartJSON.MtFPlanObject == null )
+      isMtF = false;
+  else
+      isMtF = true;
+
+  parseTableToJSON(isMtF);
     renderGanttChart( );
     editModal.style.display = "none";
 }

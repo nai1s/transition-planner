@@ -29,20 +29,20 @@
 
     //Medical effects
 
-    var bodyFat = "Body Fat Redistribution";
-    var muscleMass = "Decreased Muscle Mass";
+    var bodyFatRedistribution = "Body Fat Redistribution";
+    var decreasedMuscleMass = "Decreased Muscle Mass";
     var skinSoften = "Skin Softening";
     var breastGrowth = "Breast Growth";
     var smallerTestes = "Smaller Testes";
     var decreasedLibido = "Decreased Libido";
     var decreasedErections = "Decreased Erections";
     var moodChanges = "Mood Changes";
-    var baldness = "Baldness Loss Stops";
-    var bodyHair = "Thinning Body Hair";
+    var baldnessStops = "Baldness Loss Stops";
+    var thinningBodyHair = "Thinning Body Hair";
     var maleSexDysfunction = "Orgasm Difficulty";
     var decreasedSperm = "Lower sperm production";
 
-var taskNamesInOriginalOrder = [ comeOut, 
+var taskNamesInOriginalOrderMtF = [ comeOut, 
     spermCryoLabel, 
     hormonesLabel, 
     hairLossStartLabel,
@@ -60,8 +60,8 @@ var taskNamesInOriginalOrder = [ comeOut,
     topSurgery, 
     orchiectomySurgery, 
     bottomSurgery, 
-    bodyFat, muscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
-    decreasedLibido, moodChanges, baldness, bodyHair, maleSexDysfunction, decreasedSperm,
+    bodyFatRedistribution, decreasedMuscleMass, skinSoften, breastGrowth, smallerTestes, decreasedErections, 
+    decreasedLibido, moodChanges, baldnessStops, thinningBodyHair, maleSexDysfunction, decreasedSperm,
     hairLossEffect, prepEffect  
 ];
 
@@ -125,11 +125,11 @@ function GenerateMtFTransitionPlannerJSON(
 
     var chartEnd = new Date(hrtStart.getTime()+(1200 * msInDay));
 
-    var bodyFatStart = new Date(hrtStart.getTime()+(90 * msInDay));
-    var bodyFatMaxEffect = new Date(hrtStart.getTime()+(720 * msInDay));
+    var bodyFatRedistributionStart = new Date(hrtStart.getTime()+(90 * msInDay));
+    var bodyFatRedistributionMaxEffect = new Date(hrtStart.getTime()+(720 * msInDay));
 
-    var muscleMassStart  = new Date(hrtStart.getTime()+(90 * msInDay));
-    var muscleMassMaxEffect = new Date(hrtStart.getTime()+(360 * msInDay));
+    var decreasedMuscleMassStart  = new Date(hrtStart.getTime()+(90 * msInDay));
+    var decreasedMuscleMassMaxEffect = new Date(hrtStart.getTime()+(360 * msInDay));
 
     var skinSoftenStart  = new Date(hrtStart.getTime()+(90 * msInDay));
 
@@ -146,8 +146,8 @@ function GenerateMtFTransitionPlannerJSON(
     var decreasedTestesStart  = new Date(hrtStart.getTime()+(90 * msInDay));
     var decreasedTestesMaxEffect = new Date(hrtStart.getTime()+(720 * msInDay));
 
-    var thinnedBodyHairStart = new Date(hrtStart.getTime()+(180 * msInDay));
-    var thinnedBodyHairMaxEffect = new Date(hrtStart.getTime()+(1080 * msInDay));
+    var thinnedthinningBodyHairStart = new Date(hrtStart.getTime()+(180 * msInDay));
+    var thinnedthinningBodyHairMaxEffect = new Date(hrtStart.getTime()+(1080 * msInDay));
 
     var maleBaldnessStart = new Date(hrtStart.getTime()+(30 * msInDay));
     var maleBaldnessMaxEffect = new Date(hrtStart.getTime()+(360 * msInDay));
@@ -349,25 +349,25 @@ function GenerateMtFTransitionPlannerJSON(
         //Remove all the onset/BEFORE/MAX effect tasks if hormones aren't selected
 
     if (MtFPlanObject.hormoneStatus != "WILL-NOT-DO"){
-        taskNamesToUse.push(bodyFat);
-        taskNamesToUse.push(muscleMass);
+        taskNamesToUse.push(bodyFatRedistribution);
+        taskNamesToUse.push(decreasedMuscleMass);
         taskNamesToUse.push(skinSoften);
         taskNamesToUse.push(breastGrowth);
         taskNamesToUse.push(smallerTestes);
         taskNamesToUse.push(decreasedErections);
         taskNamesToUse.push(decreasedLibido);
         taskNamesToUse.push(moodChanges);
-        taskNamesToUse.push(baldness);
-        taskNamesToUse.push(bodyHair);
+        taskNamesToUse.push(baldnessStops);
+        taskNamesToUse.push(thinningBodyHair);
         taskNamesToUse.push(maleSexDysfunction);
         taskNamesToUse.push(decreasedSperm);
         tasks.push(
-            {"startDate": hrtStart,"endDate": bodyFatStart,"taskName": bodyFat,"status":"BEFORE"},
-            {"startDate": bodyFatStart,"endDate": bodyFatMaxEffect,"taskName": bodyFat,"status":"ONSET"},
-            {"startDate": bodyFatMaxEffect,"endDate": chartEnd,"taskName": bodyFat,"status":"MAX-EFFECT"},
-            {"startDate": hrtStart,"endDate": muscleMassStart,"taskName": muscleMass,"status":"BEFORE"},
-            {"startDate": muscleMassStart,"endDate": muscleMassMaxEffect,"taskName": muscleMass,"status":"ONSET"},
-            {"startDate": muscleMassMaxEffect,"endDate": chartEnd,"taskName": muscleMass,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": bodyFatRedistributionStart,"taskName": bodyFatRedistribution,"status":"BEFORE"},
+            {"startDate": bodyFatRedistributionStart,"endDate": bodyFatRedistributionMaxEffect,"taskName": bodyFatRedistribution,"status":"ONSET"},
+            {"startDate": bodyFatRedistributionMaxEffect,"endDate": chartEnd,"taskName": bodyFatRedistribution,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": decreasedMuscleMassStart,"taskName": decreasedMuscleMass,"status":"BEFORE"},
+            {"startDate": decreasedMuscleMassStart,"endDate": decreasedMuscleMassMaxEffect,"taskName": decreasedMuscleMass,"status":"ONSET"},
+            {"startDate": decreasedMuscleMassMaxEffect,"endDate": chartEnd,"taskName": decreasedMuscleMass,"status":"MAX-EFFECT"},
             {"startDate": hrtStart,"endDate": skinSoftenStart,"taskName": skinSoften,"status":"BEFORE"},
             {"startDate": skinSoftenStart,"endDate": chartEnd,"taskName": skinSoften,"status":"ONSET"},
             {"startDate": hrtStart,"endDate": decreasedLibidoStart,"taskName": decreasedLibido,"status":"BEFORE"},
@@ -385,12 +385,12 @@ function GenerateMtFTransitionPlannerJSON(
             {"startDate": hrtStart,"endDate": decreasedErectionsStart,"taskName": decreasedErections,"status":"BEFORE"},
             {"startDate": decreasedErectionsStart,"endDate": decreasedErectionsMaxEffect,"taskName": decreasedErections,"status":"ONSET"},
             {"startDate": decreasedErectionsMaxEffect,"endDate": chartEnd,"taskName": decreasedErections,"status":"MAX-EFFECT"},
-            {"startDate": hrtStart,"endDate": thinnedBodyHairStart,"taskName": bodyHair,"status":"BEFORE"},
-            {"startDate": thinnedBodyHairStart,"endDate": thinnedBodyHairMaxEffect,"taskName": bodyHair,"status":"ONSET"},
-            {"startDate": thinnedBodyHairMaxEffect,"endDate": chartEnd,"taskName": bodyHair,"status":"MAX-EFFECT"},
-            {"startDate": hrtStart,"endDate": maleBaldnessStart,"taskName": baldness,"status":"BEFORE"},
-            {"startDate": maleBaldnessStart,"endDate": maleBaldnessMaxEffect,"taskName": baldness,"status":"ONSET"},
-            {"startDate": maleBaldnessMaxEffect,"endDate": chartEnd,"taskName": baldness,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": thinnedthinningBodyHairStart,"taskName": thinningBodyHair,"status":"BEFORE"},
+            {"startDate": thinnedthinningBodyHairStart,"endDate": thinnedthinningBodyHairMaxEffect,"taskName": thinningBodyHair,"status":"ONSET"},
+            {"startDate": thinnedthinningBodyHairMaxEffect,"endDate": chartEnd,"taskName": thinningBodyHair,"status":"MAX-EFFECT"},
+            {"startDate": hrtStart,"endDate": maleBaldnessStart,"taskName": baldnessStops,"status":"BEFORE"},
+            {"startDate": maleBaldnessStart,"endDate": maleBaldnessMaxEffect,"taskName": baldnessStops,"status":"ONSET"},
+            {"startDate": maleBaldnessMaxEffect,"endDate": chartEnd,"taskName": baldnessStops,"status":"MAX-EFFECT"},
             {"startDate": hrtStart,"endDate": moodChangesStart,"taskName": moodChanges,"status":"BEFORE"},
             {"startDate": moodChangesStart,"endDate": moodChangesMaxEffect,"taskName": moodChanges,"status":"ONSET"},
             {"startDate": moodChangesMaxEffect,"endDate": chartEnd,"taskName": moodChanges,"status":"MAX-EFFECT"},

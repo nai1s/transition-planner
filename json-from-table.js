@@ -1,5 +1,5 @@
 
-function parseTableToJSON() {
+function parseTableToJSON(mtfPlan) {
 
     var tableLength = document.getElementById("editPlanTable").rows.length;
 
@@ -34,7 +34,10 @@ function parseTableToJSON() {
     ganttChartJSON.tasks = allTasks;
 
 
-    var allTasksInOriginalOrder = [...taskNamesInOriginalOrder];
+    var allTasksInOriginalOrder = [...taskNamesInOriginalOrderFtM];
+
+    if (mtfPlan)
+        allTasksInOriginalOrder = [...taskNamesInOriginalOrderMtF];
 
     for(var allNamesIterator = 0; allNamesIterator < allTasksInOriginalOrder.length; allNamesIterator++){
         if (!allTaskNames.includes(allTasksInOriginalOrder[allNamesIterator])) {

@@ -23,7 +23,7 @@
     var bodyHair = "Facial/Body Hair";
     var vaginalAtrophy = "Vaginal Atrophy";
 
-var taskNamesInOriginalOrder = [ comeOut, 
+var taskNamesInOriginalOrderFtM = [ comeOut, 
     hormonesLabel, 
     consultation, 
     counseling, 

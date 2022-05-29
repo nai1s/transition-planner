@@ -68,8 +68,8 @@ function formatTableCellFromObj(scheduleObj, index, arr) {
 
 
     var tableRow = "<tr>" + 
-    "<td><input type='date' id='start-" + index + "' value='" + scheduleObj.startDate.toISOString().split('T')[0] + "'></input></td>" + 
-    "<td><input type='date' id='end-" + index + "' value='" + scheduleObj.endDate.toISOString().split('T')[0] + "'></input></td>" +
+    "<td><input type='date' id='start-" + index + "' value='" + new Date(scheduleObj.startDate).toISOString().split('T')[0] + "'></input></td>" + 
+    "<td><input type='date' id='end-" + index + "' value='" + new Date(scheduleObj.endDate).toISOString().split('T')[0] + "'></input></td>" +
     "<td><input type='text' id='name-" + index + "' value='" + scheduleObj.taskName + "'></input></td>" +
     "<td><select name='status-" + index + "' id='status-select-" + index + "'>" + selectStatusOptionHTML + "</select></td>" +
     "<td><input type='button' value='Delete' onclick='deleteTableRow(this)'></tr>"
